@@ -13,8 +13,10 @@ public class MovimientoCasillas : MonoBehaviour
     public bool moving = false;
     public int moveDistance = 3;
     public float jumpHeight = 3;
-    public float moveSpeed = 2;
+    public float moveSpeed = 6f;
     public float jumpVelocity = 4.5f;
+
+    float minDistance = 0.35f;
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3(); //la dirección a la que mira
@@ -99,11 +101,24 @@ public class MovimientoCasillas : MonoBehaviour
 
     public void MoveToTile(Casilla tile)
     {
+        //cuando se hace click en una casilla objetivo
         path.Clear();
         tile.target = true;
         moving = true;
-
+       
         Casilla next = tile;
+
+
+
+        ////quiero hacer un path correcto
+        //RaycastHit hit;
+        //Debug.DrawRay(transform.position + new Vector3(0, jumpHeight*1.5f,0), new Vector3(-16.5f,0,7.5f) - transform.position, Color.magenta, 30);
+        //if (Physics.Raycast(transform.position + new Vector3(0,jumpHeight*1.5f,0), tile.centerPoint - transform.position, out hit, 3f)){
+        //    Debug.Log("chocando");
+        //}
+
+
+
         while (next != null)
         {
             Casilla n = next;
@@ -121,22 +136,18 @@ public class MovimientoCasillas : MonoBehaviour
         {
            
             Casilla t = path.Peek();
-            //Debug.Log("YO ESTOY en " +transform.position);
-            //Debug.Log("...y estoy yendo a -> "+t.transform.position + " ...cuyo centro está en "+t.transform.position + new Vector3(1.5f,0,1.5f));
-            Vector3 target = t.transform.position + new Vector3(1.5f, 0, 1.5f); //yo le sumo 1.5f porque es la mitad del tamaño de mis "tiles"
+            
+            Vector3 target = t.centerPoint;
             //Calculate the unit's position on top of the target tile
 
-            //no queremos que se mueva a la altura del tile (porque nos hundiría al personaje), lo tenemos que mover a la misma altura 
-            target.y += halfHeight;// + t.GetComponent<Collider>().bounds.extents.y;
-           // Debug.Log(Vector3.Distance(transform.position, target));
-            if (Vector3.Distance(transform.position, target) >= 0.05f)
+            target.y += halfHeight;
+            if (Vector3.Distance(transform.position, target) >= minDistance)
             {
-
-                bool jump = transform.position.y != target.y; //DEBUG vigilar esto porque a lo mejor hay que comprobar la diferencia
                 
+                bool jump = transform.position.y != target.y; //DEBUG vigilar esto porque a lo mejor hay que comprobar la diferencia
+
                 if (jump)
                 {
-                    Debug.Log("Yo estoy a altura: " + transform.position.y + " ...y la casilla objetivo está a " + target.y);
                     Jump(target);
                 }
                 else
@@ -153,7 +164,7 @@ public class MovimientoCasillas : MonoBehaviour
             }
             else
             {
-                Debug.Log("hemos llegao a "+ target);
+                //Debug.Log("hemos llegao a "+ target);
                 transform.position = target; 
                 path.Pop();
             }
@@ -186,7 +197,6 @@ public class MovimientoCasillas : MonoBehaviour
 
     void CalculateHeading(Vector3 target) {
         heading = target - transform.position;
-        Debug.Log("el TARGET está en: " + target);
         heading.Normalize();
     }
 
@@ -197,6 +207,7 @@ public class MovimientoCasillas : MonoBehaviour
 
     void Jump(Vector3 target)
     {
+       
         if (fallingDown)
         {
             FallDownward(target);
@@ -228,7 +239,7 @@ public class MovimientoCasillas : MonoBehaviour
             jumpingUp = false;
             movingEdge = true;
 
-            jumpTarget = transform.position + (target - transform.position) / 2.0f; //DEBUG esto a lo mejor hay que recalcularlo
+            jumpTarget = transform.position + (target - transform.position) / 2.0f; //DEBUG comprobar estas posiciones
         }
         else
         {
@@ -238,9 +249,9 @@ public class MovimientoCasillas : MonoBehaviour
 
             velocity = heading * moveSpeed / 3.0f; //la división es opcional, si va lento hay que variar
 
-            float difference = targetY + transform.position.y;
-            //para hacer que el salto ocurra
-            velocity.y = jumpVelocity * (0.5f + difference / 2.0f); //DEBUG quizá haya que cambiarlo para saltos altos
+            float difference = targetY - transform.position.y;
+            //para modificar la altura del salto basta con modificar la jump velocity
+            velocity.y = jumpVelocity * (0.5f + difference / 2.0f); 
         }
     }
 
@@ -262,9 +273,10 @@ public class MovimientoCasillas : MonoBehaviour
 
     void JumpUpward(Vector3 target)
     {
+       // velocity += (target - transform.position)* Time.deltaTime /2.f; //este es mi potencia de salto personal
         velocity += Physics.gravity * Time.deltaTime;
-
-        if (transform.position.y > target.y) //DEBUG A LO MEJOR HAY QUE COMPROBAR SI LA DIFERENCIA ES MAYOR A UN MÍNIMO
+       
+        if (transform.position.y > target.y) //restar jumpHeight para que no suba más del Y de la casilla 
         {
             jumpingUp = false;
             fallingDown = true;
@@ -284,7 +296,8 @@ public class MovimientoCasillas : MonoBehaviour
             movingEdge = false;
             fallingDown = true;
 
-            velocity /= 3.0f;
+            
+            velocity /= 3.0f; //no veo como influye cambiar esta velocidad
             velocity.y = 1.5f;
 
         }

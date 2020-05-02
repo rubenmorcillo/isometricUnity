@@ -35,7 +35,7 @@ public class MovimientoJugador : MovimientoCasillas
         //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         //RaycastHit hit;
-        //if(Physics.Raycast(ray, out hit))
+        //if (Physics.Raycast(ray, out hit))
         //{
         //    if (hit.collider.tag == "Suelo")
         //    {
@@ -43,6 +43,7 @@ public class MovimientoJugador : MovimientoCasillas
 
         //        if (c.selectable)
         //        {
+        //            //toDo: comprobar qué hay en la casilla target
         //            c.target = true;
         //        }
         //    }

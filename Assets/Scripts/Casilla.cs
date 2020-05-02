@@ -16,6 +16,7 @@ public class Casilla : MonoBehaviour
     public bool visited = false;
     public Casilla parent = null;
     public int distance = 0;
+    public Vector3 centerPoint;
 
     ////For A*
     //public float f = 0;
@@ -25,7 +26,7 @@ public class Casilla : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        centerPoint = transform.position + new Vector3(1.5f, 0, 1.5f);
     }
 
     // Update is called once per frame
@@ -73,7 +74,7 @@ public class Casilla : MonoBehaviour
         //CheckTile(Vector3.right, jumpHeight, target);
         //CheckTile(-Vector3.right, jumpHeight, target);
         
-        CheckTile(Vector3.forward*3f, jumpHeight );
+        CheckTile(Vector3.forward*3f, jumpHeight ); //multiplico por el tamaño de mis casillas
         CheckTile(Vector3.back*3f, jumpHeight);
         CheckTile(Vector3.right*3f, jumpHeight);
         CheckTile(Vector3.left*3f, jumpHeight);
@@ -82,14 +83,13 @@ public class Casilla : MonoBehaviour
     //public void CheckTile(Vector3 direction, float jumpHeight, Casilla target)
     public void CheckTile(Vector3 direction, float jumpHeight)
     {
-        //este vector puede que haya que cambiarlo -> original:  new Vector3(0.25f, (1 + jumpHeight) / 2.0f, 0.25f);
+        
         Vector3 halfExtents = new Vector3(0.25f, (3 + jumpHeight) / 2.0f, 0.25f);
-        Collider[] colliders = Physics.OverlapBox(transform.position  + new Vector3(1.5f, 0, 1.5f) + direction, halfExtents);
-
-        Debug.DrawRay(transform.position + new Vector3(1.5f, 0, -1.5f) + Vector3.forward * 3f, halfExtents, Color.red);
-        Debug.DrawRay(transform.position + new Vector3(-1.5f, 0, 1.5f) + Vector3.right * 3f, halfExtents, Color.green);
-        Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 4.5f) + Vector3.back * 3f, halfExtents, Color.blue);
-        Debug.DrawRay(transform.position + new Vector3(4.5f, 0, 1.5f) + Vector3.left * 3f, halfExtents, Color.yellow);
+        Collider[] colliders = Physics.OverlapBox(centerPoint + direction, halfExtents); //le sumo ese vector para corregir el centro de la casilla
+        //Debug.DrawRay(centerPoint, Vector3.forward*3f, Color.red);
+        //Debug.DrawRay(centerPoint, Vector3.right * 3f, Color.green);
+        //Debug.DrawRay(centerPoint, Vector3.back * 3f, Color.blue);
+        //Debug.DrawRay(centerPoint, Vector3.left * 3f, Color.yellow);
         foreach (Collider item in colliders)
         {
             
@@ -99,9 +99,8 @@ public class Casilla : MonoBehaviour
                 RaycastHit hit;
 
                 //comprueba si hay algo encima de la casilla
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 3))
+                if (!Physics.Raycast(tile.centerPoint, Vector3.up, out hit, 3))
                 {
-
                     adjacencyList.Add(tile);
                 }
             

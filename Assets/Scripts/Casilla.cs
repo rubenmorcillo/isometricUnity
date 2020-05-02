@@ -73,7 +73,7 @@ public class Casilla : MonoBehaviour
         //CheckTile(Vector3.right, jumpHeight, target);
         //CheckTile(-Vector3.right, jumpHeight, target);
         
-        CheckTile(Vector3.forward *3f, jumpHeight );
+        CheckTile(Vector3.forward*3f, jumpHeight );
         CheckTile(Vector3.back*3f, jumpHeight);
         CheckTile(Vector3.right*3f, jumpHeight);
         CheckTile(Vector3.left*3f, jumpHeight);
@@ -83,13 +83,13 @@ public class Casilla : MonoBehaviour
     public void CheckTile(Vector3 direction, float jumpHeight)
     {
         //este vector puede que haya que cambiarlo -> original:  new Vector3(0.25f, (1 + jumpHeight) / 2.0f, 0.25f);
-        Vector3 halfExtents = new Vector3(0.25f, (1 + jumpHeight) / 2.0f, 0.25f);
-        Collider[] colliders = Physics.OverlapBox(transform.position  +new Vector3(1.5f, 0, 1.5f) + direction, halfExtents);
-        
-        //Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 1.5f) + Vector3.forward * 3f, halfExtents, Color.red);
-        //Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 1.5f) + Vector3.right * 3f , halfExtents, Color.green);
-        //Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 1.5f) + Vector3.back * 3f, halfExtents, Color.blue);
-        //Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 1.5f) + Vector3.left * 3f, halfExtents, Color.yellow);
+        Vector3 halfExtents = new Vector3(0.25f, (3 + jumpHeight) / 2.0f, 0.25f);
+        Collider[] colliders = Physics.OverlapBox(transform.position  + new Vector3(1.5f, 0, 1.5f) + direction, halfExtents);
+
+        Debug.DrawRay(transform.position + new Vector3(1.5f, 0, -1.5f) + Vector3.forward * 3f, halfExtents, Color.red);
+        Debug.DrawRay(transform.position + new Vector3(-1.5f, 0, 1.5f) + Vector3.right * 3f, halfExtents, Color.green);
+        Debug.DrawRay(transform.position + new Vector3(1.5f, 0, 4.5f) + Vector3.back * 3f, halfExtents, Color.blue);
+        Debug.DrawRay(transform.position + new Vector3(4.5f, 0, 1.5f) + Vector3.left * 3f, halfExtents, Color.yellow);
         foreach (Collider item in colliders)
         {
             
@@ -103,7 +103,7 @@ public class Casilla : MonoBehaviour
                 {
 
                     adjacencyList.Add(tile);
-                 }
+                }
             
             }
         }

@@ -11,8 +11,8 @@ public class MovimientoCasillas : MonoBehaviour
     Casilla currentTile;
 
     public bool moving = false;
-    public int moveDistance = 1;
-    public float jumpHeight = 2;
+    public int moveDistance = 3;
+    public float jumpHeight = 3;
     public float moveSpeed = 2;
 
     Vector3 velocity = new Vector3();
@@ -40,7 +40,6 @@ public class MovimientoCasillas : MonoBehaviour
         Casilla tile = null;
         if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))
         {
-            Debug.DrawRay(target.transform.position, Vector3.up, Color.red);
             tile = hit.collider.GetComponent<Casilla>();
         }
         return tile;
@@ -94,7 +93,6 @@ public class MovimientoCasillas : MonoBehaviour
 
     public void MoveToTile(Casilla tile)
     {
-        Debug.Log(tile.transform.position);
         path.Clear();
         tile.target = true;
         moving = true;
@@ -117,16 +115,17 @@ public class MovimientoCasillas : MonoBehaviour
         {
            
             Casilla t = path.Peek();
-            Debug.Log("YO ESTOY en " +transform.position);
-            Debug.Log("...y estoy yendo a -> "+t.transform.position);
-            Vector3 target = t.transform.position + new Vector3(1.5f, 0, 1.5f); //esto creo que nos va a mover a la esquina, tendré que calcular el centro +new Vector(1.5,0,1.5);
+            //Debug.Log("YO ESTOY en " +transform.position);
+            //Debug.Log("...y estoy yendo a -> "+t.transform.position + " ...cuyo centro está en "+t.transform.position + new Vector3(1.5f,0,1.5f));
+            Vector3 target = t.transform.position + new Vector3(1.5f, 0, 1.5f); //yo le sumo 1.5f porque es la mitad del tamaño de mis "tiles"
             //Calculate the unit's position on top of the target tile
-            
-            //no queremos que se mueva a la altura del tile (porque no hundiría al personaje), lo tenemos que mover a la misma altura 
-            target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
+
+            //no queremos que se mueva a la altura del tile (porque nos hundiría al personaje), lo tenemos que mover a la misma altura 
+            target.y += halfHeight;// + t.GetComponent<Collider>().bounds.extents.y;
            // Debug.Log(Vector3.Distance(transform.position, target));
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
+
                 CalculateHeading(target);
                 SetHorizontalVelocity();
 
@@ -136,15 +135,15 @@ public class MovimientoCasillas : MonoBehaviour
             }
             else
             {
-                //se supone que hemos llegao
-                Debug.Log("hemos llegao");
-                transform.position = target;  //a lo mejor también hay que moverlo
+                Debug.Log("hemos llegao a "+ target);
+                transform.position = target; 
                 path.Pop();
             }
 
         }
         else
         {
+           
             RemoveSelectableTiles();
             moving = false;
         }
@@ -170,8 +169,7 @@ public class MovimientoCasillas : MonoBehaviour
     void CalculateHeading(Vector3 target) {
         heading = target - transform.position;
         Debug.Log("el TARGET está en: " + target);
-        Debug.Log("El heading es" + heading);
-        heading.Normalize(); //probar a comentar esto si tenemos problemas con el apuntado
+        heading.Normalize();
     }
 
     void SetHorizontalVelocity()

@@ -14,6 +14,8 @@ public class MovimientoJugador : MovimientoCasillas
 
     void Update()
     {
+
+       // Debug.DrawRay(transform.position, transform.forward);
         //cuando sea mi turno
         if (!moving)
         {

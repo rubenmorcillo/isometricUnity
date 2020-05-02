@@ -14,11 +14,17 @@ public class MovimientoCasillas : MonoBehaviour
     public int moveDistance = 3;
     public float jumpHeight = 3;
     public float moveSpeed = 2;
+    public float jumpVelocity = 4.5f;
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3(); //la dirección a la que mira
 
     float halfHeight = 0;
+
+    bool fallingDown = false;
+    bool jumpingUp = false;
+    bool movingEdge = false;
+    Vector3 jumpTarget;
 
     protected void Init()
     {
@@ -126,9 +132,21 @@ public class MovimientoCasillas : MonoBehaviour
             if (Vector3.Distance(transform.position, target) >= 0.05f)
             {
 
-                CalculateHeading(target);
-                SetHorizontalVelocity();
-
+                bool jump = transform.position.y != target.y; //DEBUG vigilar esto porque a lo mejor hay que comprobar la diferencia
+                
+                if (jump)
+                {
+                    Debug.Log("Yo estoy a altura: " + transform.position.y + " ...y la casilla objetivo está a " + target.y);
+                    Jump(target);
+                }
+                else
+                {
+                    CalculateHeading(target);
+                    SetHorizontalVelocity();
+                }
+                  
+                
+                //movimiento
                 transform.forward = heading;
                 transform.position += velocity * Time.deltaTime;
 
@@ -176,4 +194,101 @@ public class MovimientoCasillas : MonoBehaviour
     {
         velocity = heading * moveSpeed;
     }
+
+    void Jump(Vector3 target)
+    {
+        if (fallingDown)
+        {
+            FallDownward(target);
+        }
+        else if(jumpingUp)
+        {
+            JumpUpward(target);
+        }else if (movingEdge)
+        {
+            MoveToEdge();
+        }
+        else
+        {
+            PrepareJump(target);
+        }
+    }
+
+    void PrepareJump(Vector3 target)
+    {
+        float targetY = target.y;
+        //aqui arreglamos la Y
+        target.y = transform.position.y; //comprobar que pasa si comento ésto
+
+        CalculateHeading(target);
+
+        if (transform.position.y > target.y)
+        {
+            fallingDown = false;
+            jumpingUp = false;
+            movingEdge = true;
+
+            jumpTarget = transform.position + (target - transform.position) / 2.0f; //DEBUG esto a lo mejor hay que recalcularlo
+        }
+        else
+        {
+            fallingDown = false;
+            jumpingUp = true;
+            movingEdge = false;
+
+            velocity = heading * moveSpeed / 3.0f; //la división es opcional, si va lento hay que variar
+
+            float difference = targetY + transform.position.y;
+            //para hacer que el salto ocurra
+            velocity.y = jumpVelocity * (0.5f + difference / 2.0f); //DEBUG quizá haya que cambiarlo para saltos altos
+        }
+    }
+
+    void FallDownward(Vector3 target)
+    {
+        velocity += Physics.gravity * Time.deltaTime;
+
+        if (transform.position.y <= target.y)
+        {
+            fallingDown = false;
+
+            Vector3 p = transform.position;
+            p.y = target.y;
+            transform.position = p;
+
+            velocity = new Vector3();
+        }
+    }
+
+    void JumpUpward(Vector3 target)
+    {
+        velocity += Physics.gravity * Time.deltaTime;
+
+        if (transform.position.y > target.y) //DEBUG A LO MEJOR HAY QUE COMPROBAR SI LA DIFERENCIA ES MAYOR A UN MÍNIMO
+        {
+            jumpingUp = false;
+            fallingDown = true;
+
+        }
+    }
+
+    void MoveToEdge()
+    {
+        if (Vector3.Distance(transform.position, jumpTarget) >= 0.05f) //DEBUG revisar estas posiciones
+        {  
+
+            SetHorizontalVelocity();
+        }
+        else
+        {
+            movingEdge = false;
+            fallingDown = true;
+
+            velocity /= 3.0f;
+            velocity.y = 1.5f;
+
+        }
+    }
+
+
 }

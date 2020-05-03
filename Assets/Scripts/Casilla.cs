@@ -85,7 +85,7 @@ public class Casilla : MonoBehaviour
     {
         
         Vector3 halfExtents = new Vector3(0.25f, (3 + jumpHeight) / 2.0f, 0.25f);
-        Collider[] colliders = Physics.OverlapBox(centerPoint + direction, halfExtents); //le sumo ese vector para corregir el centro de la casilla
+        Collider[] colliders = Physics.OverlapBox(centerPoint + direction, halfExtents); 
         //Debug.DrawRay(centerPoint, Vector3.forward*3f, Color.red);
         //Debug.DrawRay(centerPoint, Vector3.right * 3f, Color.green);
         //Debug.DrawRay(centerPoint, Vector3.back * 3f, Color.blue);

@@ -233,13 +233,14 @@ public class MovimientoCasillas : MonoBehaviour
 
         CalculateHeading(target);
 
-        if (transform.position.y > target.y)
+        if (transform.position.y > targetY)
         {
+            Debug.Log("jeyu jey");
             fallingDown = false;
             jumpingUp = false;
             movingEdge = true;
 
-            jumpTarget = transform.position + (target - transform.position) / 2.0f; //DEBUG comprobar estas posiciones
+            jumpTarget = transform.position + (target - transform.position);
         }
         else
         {
@@ -250,7 +251,7 @@ public class MovimientoCasillas : MonoBehaviour
             velocity = heading * moveSpeed / 3.0f; //la división es opcional, si va lento hay que variar
 
             float difference = targetY - transform.position.y;
-            //para modificar la altura del salto basta con modificar la jump velocity
+            //para modificar la altura del salto basta con modificar la jump velocity (en la variable, no aquí)
             velocity.y = jumpVelocity * (0.5f + difference / 2.0f); 
         }
     }
@@ -262,6 +263,8 @@ public class MovimientoCasillas : MonoBehaviour
         if (transform.position.y <= target.y)
         {
             fallingDown = false;
+            jumpingUp = false;
+            movingEdge = false;
 
             Vector3 p = transform.position;
             p.y = target.y;
@@ -286,9 +289,8 @@ public class MovimientoCasillas : MonoBehaviour
 
     void MoveToEdge()
     {
-        if (Vector3.Distance(transform.position, jumpTarget) >= 0.05f) //DEBUG revisar estas posiciones
-        {  
-
+        if (Vector3.Distance(transform.position, jumpTarget) >= 1.55f)
+        {
             SetHorizontalVelocity();
         }
         else
@@ -296,8 +298,7 @@ public class MovimientoCasillas : MonoBehaviour
             movingEdge = false;
             fallingDown = true;
 
-            
-            velocity /= 3.0f; //no veo como influye cambiar esta velocidad
+            velocity /= 9.0f; //velocidad con la que va hasta el centro de la casilla
             velocity.y = 1.5f;
 
         }

@@ -17,6 +17,11 @@ public class MovimientoJugador : MovimientoCasillas
 
        // Debug.DrawRay(transform.position, transform.forward);
         //cuando sea mi turno
+        if (!turn)
+        {
+            return;
+        }
+
         if (!moving)
         {
             

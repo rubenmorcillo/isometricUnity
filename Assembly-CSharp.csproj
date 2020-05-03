@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\MovimientoCasillas.cs" />
     <Compile Include="Assets\Scripts\MovimientoJugador.cs" />
     <Compile Include="Assets\Scripts\TacticsCamera.cs" />
+    <Compile Include="Assets\Scripts\Turnos.cs" />
     <Reference Include="Unity.ProGrids">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
     </Reference>

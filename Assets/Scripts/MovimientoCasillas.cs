@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovimientoCasillas : MonoBehaviour
 {
+    public bool turn = false;
+
     List<Casilla> selectableTiles = new List<Casilla>();
     GameObject[] tiles;
 
@@ -34,6 +36,8 @@ public class MovimientoCasillas : MonoBehaviour
 
         //calculamos el centro del player, con la mitad de la altura desde la casilla
         halfHeight = GetComponent<Collider>().bounds.extents.y;
+
+        Turnos.AddUnit(this);
     }
 
     public void GetCurrentTile()
@@ -172,9 +176,14 @@ public class MovimientoCasillas : MonoBehaviour
         }
         else
         {
-           
+            //se ha terminado de mover
             RemoveSelectableTiles();
             moving = false;
+            
+            //deberíamos poder hacer las acciones antes de terminar el turno
+
+            //termina el turno de la unidad
+            Turnos.EndTurn();
         }
 
     }
@@ -304,5 +313,13 @@ public class MovimientoCasillas : MonoBehaviour
         }
     }
 
+    public void BeginTurn()
+    {
+        turn = true;
+    }
 
+    public void EndTurn()
+    {
+        turn = false;
+    }
 }

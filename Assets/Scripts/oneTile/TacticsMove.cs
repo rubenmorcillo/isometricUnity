@@ -391,6 +391,7 @@ public class TacticsMove : MonoBehaviour
 
     public void BeginTurn()
     {
+        Debug.Log("empieza mi turno, soy" + gameObject);
         turn = true;
     }
 

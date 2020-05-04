@@ -26,7 +26,7 @@ public LayerMask mascMov;
             RaycastHit hit;
             
             if (Physics.Raycast(ray, out hit)){
-                if(hit.collider.CompareTag("Suelo")){
+                if(hit.collider.CompareTag("Tile")){
 					  motor.MoverAlPunto(hit.point);
 				}
 

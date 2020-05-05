@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPCMove : TacticsMove 
 {
     GameObject target;
+    
 
 	// Use this for initialization
 	void Start () 
@@ -23,6 +24,7 @@ public class NPCMove : TacticsMove
 
         if (!moving)
         {
+            animator.Play("Idle");
             FindNearestTarget();
             CalculatePath();
             FindSelectableTiles();
@@ -30,6 +32,7 @@ public class NPCMove : TacticsMove
         }
         else
         {
+            animator.SetBool("moving", true);
             Move();
         }
 	}

@@ -29,6 +29,7 @@ public class PlayerMove : TacticsMove
         }
         else
         {
+            animator.SetBool("moving", true);
             Move();
         }
 	}

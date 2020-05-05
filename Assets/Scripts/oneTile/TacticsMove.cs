@@ -34,13 +34,19 @@ public class TacticsMove : MonoBehaviour
 
     public Tile actualTargetTile;
 
+    protected Animator animator;
+
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         halfHeight = GetComponent<Collider>().bounds.extents.y;
 
+        animator = GetComponentInChildren<Animator>();
+
         TurnManager.AddUnit(this);
+
+       
     }
 
     public void GetCurrentTile()
@@ -398,5 +404,6 @@ public class TacticsMove : MonoBehaviour
     public void EndTurn()
     {
         turn = false;
+        animator.SetBool("moving", false);
     }
 }

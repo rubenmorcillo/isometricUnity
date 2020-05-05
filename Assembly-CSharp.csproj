@@ -69,7 +69,6 @@
     <Compile Include="Assets\Scripts\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\MovimientoCasillas.cs" />
     <Compile Include="Assets\Scripts\MovimientoJugador.cs" />
-    <Compile Include="Assets\Scripts\oneTile\MenuScript.cs" />
     <Compile Include="Assets\Scripts\oneTile\NPCMove.cs" />
     <Compile Include="Assets\Scripts\oneTile\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\oneTile\TacticsMove.cs" />

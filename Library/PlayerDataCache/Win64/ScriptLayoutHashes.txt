@@ -1,8 +1,8 @@
 Win64
 PlayerPath?
-C:/Users/Rubén/Desktop/probando proGrids.exe
+C:/Users/Rubén/Documents/Unity projects/probando proGrids/Builts/probando proGrids.exe
 SceneListBegin?
-Assets/Scenes/escenario1.unity
+Assets/Scenes/exterior_01.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
@@ -85,8 +85,9 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-ed73acfac05495da96bd8063f6da6de7 Assembly-CSharp.dll:.Casilla
-1826240730843756f11263d30bae13a1 Assembly-CSharp.dll:.MovimientoJugador
+d32414ef34477e5d2f1952db89434efb Assembly-CSharp.dll:.TacticsMove
+11ac12aab8c5f7202464f71fa435bd05 Assembly-CSharp.dll:.Casilla
+12f6f6c2dc01d194316668ec8ed0e499 Assembly-CSharp.dll:.MovimientoJugador
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
 780e8f682b3221346c034a6712a0fd25 UnityEngine.Timeline.dll:UnityEngine.Timeline.AnimationPlayableAsset
@@ -122,6 +123,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.ProGrids.dll:UnityEngine.ProGrids.IgnoreSnap
+02263d97b187ab499ff456c1c2725320 Assembly-CSharp.dll:.Tile
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MotorJugador
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -138,7 +140,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-1826240730843756f11263d30bae13a1 Assembly-CSharp.dll:.MovimientoCasillas
+12f6f6c2dc01d194316668ec8ed0e499 Assembly-CSharp.dll:.MovimientoCasillas
 510fefd6a544e16a3ffefa557ddcba39 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 aa82b3ce4c0c9b227036c0337315c5d3 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e51c09a4cc447f11db225afcd8e3e490 Unity.TextMeshPro.dll:TMPro.TMP_Settings
@@ -162,6 +164,11 @@ a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Turnos
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
+c7c1d12443cccb34562f308ab3a804f5 Assembly-CSharp.dll:.TileScript
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.TurnManager
+d32414ef34477e5d2f1952db89434efb Assembly-CSharp.dll:.PlayerMove
+d32414ef34477e5d2f1952db89434efb Assembly-CSharp.dll:.NPCMove

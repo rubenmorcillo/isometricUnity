@@ -131,9 +131,9 @@ public class TacticsMove : MonoBehaviour
     {
         if (path.Count > 0)
         {
+            
             Tile t = path.Peek();
             Vector3 target = t.transform.position;
-
             //Calculate the unit's position on top of the target tile
             target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
 
@@ -391,7 +391,7 @@ public class TacticsMove : MonoBehaviour
             }
         }
 
-        //todo - what do you do if there is no path to the target tile?
+        //no hay camino disponible...
         Debug.Log("Path not found");
     }
 

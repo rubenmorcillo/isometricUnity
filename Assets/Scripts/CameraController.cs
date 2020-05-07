@@ -1,4 +1,5 @@
 ﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,13 @@ public class CameraController : MonoBehaviour
 
     public float movementSpeed;
     public float movementTime;
+    public float margen = 10f;
 
     public Vector3 newPosition;
+
+    
+
+    public Vector2 panLimit;
    
 
     void Update()
@@ -19,33 +25,53 @@ public class CameraController : MonoBehaviour
 
     void HandleMovementInput()
     {
+
+        
+
         if (newPosition == null)
         {
             newPosition = transform.position;
         }
 
-        if (Input.mousePosition.y > Screen.height - Screen.height * 0.05)
+        if (transform.position.z > 23f)
         {
-            newPosition += transform.forward * movementSpeed;
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
+            newPosition.z = 23f;
         }
-        else if(Input.mousePosition.y < 0 + Screen.height * 0.05)
+        else if (transform.position.z < -2.5f)
         {
-            newPosition += transform.forward * -movementSpeed;
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
-        }
-        
-        if(Input.mousePosition.x > Screen.width - Screen.width * 0.05)
-        {
-            newPosition += transform.right * movementSpeed;
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
-        }
-        else if(Input.mousePosition.x <= 0 - Screen.width * 0.05)
-        {
-            newPosition += transform.right * -movementSpeed;
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
+            newPosition.z = -2.5f;
         }
 
-        newPosition = transform.position;
+        if (Input.mousePosition.y > Screen.height - margen)
+        {
+            newPosition += transform.forward * movementSpeed;
+            //transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
+        }
+        else if(Input.mousePosition.y < margen )
+        {
+            newPosition += transform.forward * -movementSpeed;
+            //transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
+        }
+        
+        if(Input.mousePosition.x > Screen.width - margen)
+        {
+            newPosition += transform.right * movementSpeed;
+            //transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
+        }
+        else if(Input.mousePosition.x <=  margen )
+        {
+            newPosition += transform.right * -movementSpeed;
+            //transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * movementSpeed);
+        }
+
+
+
+        newPosition.x = Mathf.Clamp(newPosition.x, -panLimit.x, panLimit.x);
+        newPosition.z = Mathf.Clamp(newPosition.z, -panLimit.y, panLimit.y);
+
+
+
+
+        transform.position = newPosition;
     }
 }

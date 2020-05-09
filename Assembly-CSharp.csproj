@@ -63,10 +63,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
+    <Compile Include="Assets\LevelBuilding\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Casilla.cs" />
     <Compile Include="Assets\Scripts\LogicaJugadorMouse.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\LevelCreator.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\Sala.cs" />
     <Compile Include="Assets\Scripts\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\MovimientoCasillas.cs" />
     <Compile Include="Assets\Scripts\MovimientoJugador.cs" />
@@ -78,8 +80,17 @@
     <Compile Include="Assets\Scripts\oneTile\TurnManager.cs" />
     <Compile Include="Assets\Scripts\TacticsCamera.cs" />
     <Compile Include="Assets\Scripts\Turnos.cs" />
+    <Reference Include="Unity.Timeline.Editor">
+      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.multiplayer-hlapi.Editor">
+      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProGrids">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids.Editor">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
@@ -87,29 +98,14 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.CollabProxy.Editor">
+      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
@@ -131,6 +127,12 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.DataPrivacy">
+      <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>

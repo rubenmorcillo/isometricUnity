@@ -32,12 +32,6 @@ public class MotorJugador : MonoBehaviour
                 {
                     anim.SetBool("moving", false);
                 }
-            
-            
-        }
-        else
-        {
-
         }
     }
 

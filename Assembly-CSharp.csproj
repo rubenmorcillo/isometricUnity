@@ -67,7 +67,9 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Casilla.cs" />
     <Compile Include="Assets\Scripts\LogicaJugadorMouse.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\EstadosMazmorra.cs" />
     <Compile Include="Assets\Scripts\mazmorras\LevelCreator.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\Puerta.cs" />
     <Compile Include="Assets\Scripts\mazmorras\Sala.cs" />
     <Compile Include="Assets\Scripts\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\MovimientoCasillas.cs" />

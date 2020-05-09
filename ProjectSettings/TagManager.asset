@@ -9,6 +9,8 @@ TagManager:
   - Puerta
   - Suelo
   - NPC
+  - puertaD
+  - puertaI
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - SalidaMazmorra
   - 
   - 
   - 

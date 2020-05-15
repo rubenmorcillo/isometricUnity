@@ -82,6 +82,8 @@
     <Compile Include="Assets\Scripts\oneTile\TurnManager.cs" />
     <Compile Include="Assets\Scripts\TacticsCamera.cs" />
     <Compile Include="Assets\Scripts\Turnos.cs" />
+    <None Include="Assets\Sci-Fi Styled Modular Pack\Readme.txt" />
+    <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

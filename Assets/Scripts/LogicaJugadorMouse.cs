@@ -11,12 +11,22 @@ public LayerMask mascMov;
     Camera cam;
 	public GameObject camPos;
     MotorJugador motor;
+    LevelCreator levelCreator;
 
 
     void Start()
     {
         cam = Camera.main;
-        motor = GetComponent<MotorJugador>();
+        if (motor == null)
+        {
+            motor = gameObject.AddComponent<MotorJugador>();
+        }
+        else
+        {
+            motor = GetComponent<MotorJugador>();
+        }
+        
+        levelCreator = FindObjectOfType<LevelCreator>();
     }
 
     void Update()
@@ -35,7 +45,7 @@ public LayerMask mascMov;
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.CompareTag("Tile"))
+                if (!hit.collider.CompareTag("Muro"))
                 {
                     motor.MoverAlPunto(hit.point);
                 }
@@ -49,13 +59,22 @@ public LayerMask mascMov;
     public void CheckPuerta()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.right, Color.magenta, 10);
-        if (Physics.Raycast(transform.position + new Vector3(0,1f,0), Vector3.right,out hit, 1.0f)) {
+        Debug.DrawRay(transform.position, Vector3.down, Color.magenta, 10);
+        if (Physics.Raycast(transform.position + new Vector3(0,1,0), Vector3.down,out hit, 1.0f,9)) {
             if (hit.collider.gameObject.layer == 9 || hit.collider.tag == "Puerta")
             {
-                Debug.Log("estás en la salida, brivón");
+                Debug.Log("pulsa espacio para continuar");
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    levelCreator.SiguienteSala();
+                }
+
+              
             }
+          
+
         }
+       
     }
 
 }

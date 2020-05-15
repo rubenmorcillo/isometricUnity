@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class LevelCreator : MonoBehaviour
 {
@@ -10,9 +12,11 @@ public class LevelCreator : MonoBehaviour
     public GameObject player;
 
     public List<GameObject> unidades;
-
+    [SerializeField]
     List<GameObject> salasCombate = new List<GameObject>();
+    [SerializeField]
     List<GameObject> pasillos = new List<GameObject>();
+    [SerializeField]
     List<GameObject> salasInicio = new List<GameObject>();
 
     List<GameObject> salasMazmorra = new List<GameObject>();
@@ -25,11 +29,11 @@ public class LevelCreator : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+       
+    //}
 
     void FiltrarPrefabs()
     {
@@ -42,12 +46,14 @@ public class LevelCreator : MonoBehaviour
             else if(p.name.Contains("SalaCombate"))
             {
                 salasCombate.Add(p);
-            }else if(p.name == "SalaInicio")
+            }else if(p.name.Contains("Inicio"))
             {
                 salasInicio.Add(p);
             }
         }
     }
+
+
 
     void CrearSalaInicial()
     {
@@ -58,6 +64,22 @@ public class LevelCreator : MonoBehaviour
         salaActiva = sala;
     }
 
+    public void SiguienteSala()
+    {
+        if (!pasillos.Contains(salaActiva))
+        {
+            //si la sala activa no es un pasillo, tenemos que colocar un pasillo. Porque después de cada Sala hay un pasillo.
+            int numero = new System.Random().Next(salasCombate.Count-1);
+            GameObject newSala = salasCombate[numero];
+            Debug.Log("Vamos a colocar " + newSala.name);
+        }
+    }
+
+    void crearPasillo()
+    {
+
+    }
+
     void posicionarJugador()
     {
         GameObject spawn; 
@@ -66,10 +88,10 @@ public class LevelCreator : MonoBehaviour
 
         if (spawn != null)
         {
-           player = Instantiate(player, spawn.transform);
-          // player.AddComponent<MotorJugador>();
-           player.AddComponent<LogicaJugadorMouse>();
           
+            player.AddComponent<LogicaJugadorMouse>();
+            player.AddComponent<NavMeshAgent>();
+            player = Instantiate(player, spawn.transform);
         }
         else
         {

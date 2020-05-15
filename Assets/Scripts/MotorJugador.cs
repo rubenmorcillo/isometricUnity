@@ -25,19 +25,19 @@ public class MotorJugador : MonoBehaviour
     
     void Update()
     {
-       if (agenteNav.isActiveAndEnabled)
-        {
+       //if (agenteNav.isActiveAndEnabled)
+       // {
            
-                if (gameObject.transform.position == agenteNav.pathEndPosition)
-                {
-                    anim.SetBool("moving", false);
-                }
-        }
+       //         if (gameObject.transform.position == agenteNav.pathEndPosition)
+       //         {
+       //             anim.SetBool("moving", false);
+       //         }
+       // }
     }
 
     public void MoverAlPunto(Vector3 punto)
     {
-        anim.SetBool("moving", true);
+        //anim.SetBool("moving", true);
 		agenteNav.SetDestination(punto);		
         
     }

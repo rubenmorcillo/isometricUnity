@@ -105,7 +105,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.2
+    agentRadius: 0.09
     agentHeight: 4
     agentSlope: 45
     agentClimb: 0.5
@@ -113,7 +113,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 1
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.06666667
+    cellSize: 0.030000001
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -344,12 +344,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabs:
-  - {fileID: 3731871594183527660, guid: 2abadea4ed7abe64cba4fa9df39280d4, type: 3}
+  - {fileID: 2668601441768274611, guid: 53d918533df7482458e19c67684e7f83, type: 3}
   - {fileID: 5132261065447986505, guid: 908389459db67174082a3cce19157161, type: 3}
   - {fileID: 6148906889757185421, guid: b4078dd33bd15564387c48d8a7580d31, type: 3}
-  player: {fileID: 1786708285944595705, guid: e050f321fb79edc429eba94298a7d696, type: 3}
+  player: {fileID: 2631726817811100127, guid: f847430e1b97ddc409882f9c993e279e, type: 3}
   unidades:
   - {fileID: 2695606857811973687, guid: f6d118e590886014b98657adb5e60c41, type: 3}
+  salasCombate: []
+  pasillos: []
+  salasInicio: []
 --- !u!1001 &1417728119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -419,3 +422,77 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f482965bd85487e4880cd4848c140b0d, type: 3}
+--- !u!1001 &1640017998501519778
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2668601441768274611, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_Name
+      value: SalaInicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668601441768274611, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8342441969044734707, guid: 53d918533df7482458e19c67684e7f83,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 53d918533df7482458e19c67684e7f83, type: 3}

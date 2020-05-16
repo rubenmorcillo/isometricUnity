@@ -65,9 +65,10 @@ public LayerMask mascMov;
               //  Debug.Log("pulsa espacio para continuar");
                 if (Input.GetKey(KeyCode.Space))
                 {
-                   
-                    levelCreator.SiguienteSala();
-                    GameObject.Destroy(gameObject.GetComponentInChildren<Puerta>());
+                    //Debug.Log("Estoy abriendo la puerta " + hit.collider.GetComponentInParent<Puerta>());
+                    levelCreator.abrirPuerta(hit.collider.GetComponentInParent<Puerta>());
+                    
+                    //GameObject.Destroy(gameObject.GetComponentInChildren<Puerta>());
                 }
             }
         }

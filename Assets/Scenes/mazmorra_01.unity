@@ -269,36 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e749ffeefa1dbe4e819c7a6d26a2cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &891824544
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 891824545}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &891824545
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891824544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1074694012}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1074694011
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +296,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 891824545}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -350,9 +319,7 @@ MonoBehaviour:
   player: {fileID: 2631726817811100127, guid: f847430e1b97ddc409882f9c993e279e, type: 3}
   unidades:
   - {fileID: 2695606857811973687, guid: f6d118e590886014b98657adb5e60c41, type: 3}
-  salasCombate: []
-  pasillos: []
-  salasInicio: []
+  salaActiva: {fileID: 0}
 --- !u!1001 &1417728119
 PrefabInstance:
   m_ObjectHideFlags: 0

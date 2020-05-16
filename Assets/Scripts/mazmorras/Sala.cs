@@ -8,6 +8,7 @@ public class Sala : MonoBehaviour
 {
     public GameObject puntoUnion;
     public int anchoInicio;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,26 @@ public class Sala : MonoBehaviour
         NavMeshBuilder.BuildNavMeshAsync();
         
         
+    }
+
+    public Mesh getGeneralMesh()
+    {
+        MeshFilter[] meses = gameObject.GetComponentsInChildren<MeshFilter>();
+        // Debug.Log("tenemos meshes -> " + meses.Length);
+        Mesh finalMesh = new Mesh();
+
+        CombineInstance[] combiners = new CombineInstance[meses.Length];
+
+        for (int i = 0; i < meses.Length; i++)
+        {
+            combiners[i].subMeshIndex = 0;
+            combiners[i].mesh = meses[i].sharedMesh;
+            combiners[i].transform = meses[i].transform.localToWorldMatrix;
+        }
+
+        finalMesh.CombineMeshes(combiners);
+
+        return finalMesh;
     }
 
     //// Update is called once per frame

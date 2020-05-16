@@ -1236,6 +1236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 35309783250141414}
   - component: {fileID: 3657420410031929027}
+  - component: {fileID: 6886168670692376681}
   m_Layer: 0
   m_Name: triggerSalida
   m_TagString: Puerta
@@ -1270,6 +1271,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6886168670692376681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3323963669513018293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2174e03d540dbc842b44a0af299bcb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3631615503862763120
 GameObject:
   m_ObjectHideFlags: 0

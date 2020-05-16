@@ -12,14 +12,13 @@ public class LevelCreator : MonoBehaviour
     public GameObject player;
 
     public List<GameObject> unidades;
-    [SerializeField]
     List<GameObject> salasCombate = new List<GameObject>();
-    [SerializeField]
     List<GameObject> pasillos = new List<GameObject>();
-    [SerializeField]
     List<GameObject> salasInicio = new List<GameObject>();
 
     List<GameObject> salasMazmorra = new List<GameObject>();
+
+    [SerializeField]
     GameObject salaActiva;
     void Start()
     {
@@ -66,31 +65,53 @@ public class LevelCreator : MonoBehaviour
 
     public void SiguienteSala()
     {
-        if (!pasillos.Contains(salaActiva))
+        Sala salaActual = salaActiva.GetComponent<Sala>();
+        
+        GameObject prefab;
+        Sala salaSiguiente;
+        Debug.Log("el tag actual " +salaActual.tag);
+        if (!salaActual.CompareTag("Pasillo"))
         {
             //si la sala activa no es un pasillo, tenemos que colocar un pasillo. Porque después de cada Sala hay un pasillo.
-            int numero = new System.Random().Next(salasCombate.Count-1);
-            GameObject newSala = salasCombate[numero];
-            Debug.Log("Vamos a colocar " + newSala.name);
+            Debug.Log(salaActiva.GetComponent<Sala>().puntoUnion.transform);
+            prefab = Instantiate(pasillos[0], gameObject.transform);
+            salaSiguiente = prefab.GetComponent<Sala>();
+            prefab.transform.Translate(salaActual.puntoUnion.transform.position - new Vector3(0, 0, salaSiguiente.anchoInicio + 0.5f));
         }
+        else
+        {
+            Debug.Log("tenemos " + salasCombate.Count + " salas");
+            prefab = salasCombate[new System.Random().Next(salasCombate.Count)];
+            Debug.Log("Vamos a colocar " + prefab.name);
+            prefab = Instantiate(prefab, gameObject.transform);
+            salaSiguiente = prefab.GetComponent<Sala>();
+            prefab.transform.Translate(salaActual.puntoUnion.transform.position + new Vector3(0, 0, salaSiguiente.anchoInicio + 0.5f));
+        }
+        //chapuza para colocarlo
+        //tenemos que desplazarlo según el ancho de la nuevaSala (y 0.5 más en la X y la Z)
+       
+        
+      
+        prefab.transform.Rotate(new Vector3(0, 90, 0));
+        salaActiva = prefab;
+        Debug.Log("el nuevo tag " + salaSiguiente.tag);
+        //tenemos que abrir la puerta y eliminar la anterior sala
+
     }
 
-    void crearPasillo()
-    {
+    
 
-    }
+    
 
     void posicionarJugador()
     {
         GameObject spawn; 
-            
         spawn = GameObject.Find("playerSpawn");
 
         if (spawn != null)
         {
           
-            player.AddComponent<LogicaJugadorMouse>();
-            player.AddComponent<NavMeshAgent>();
+            ///player.AddComponent<LogicaJugadorMouse>();
             player = Instantiate(player, spawn.transform);
         }
         else

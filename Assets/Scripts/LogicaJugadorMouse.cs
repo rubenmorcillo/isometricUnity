@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MotorJugador))]
 
 public class LogicaJugadorMouse : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public LayerMask mascMov;
         {
             motor = GetComponent<MotorJugador>();
         }
-        
+       
         levelCreator = FindObjectOfType<LevelCreator>();
     }
 
@@ -33,7 +32,7 @@ public LayerMask mascMov;
     {
         CheckMousse();
         CheckPuerta();
-		
+
     }
 
     void CheckMousse()
@@ -55,26 +54,23 @@ public LayerMask mascMov;
         }
     }
 
-    
+
     public void CheckPuerta()
     {
         RaycastHit hit;
-        Debug.DrawRay(transform.position, Vector3.down, Color.magenta, 10);
-        if (Physics.Raycast(transform.position + new Vector3(0,1,0), Vector3.down,out hit, 1.0f,9)) {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.0f, 9))
+        {
             if (hit.collider.gameObject.layer == 9 || hit.collider.tag == "Puerta")
             {
-                Debug.Log("pulsa espacio para continuar");
+              //  Debug.Log("pulsa espacio para continuar");
                 if (Input.GetKey(KeyCode.Space))
                 {
+                   
                     levelCreator.SiguienteSala();
+                    GameObject.Destroy(gameObject.GetComponentInChildren<Puerta>());
                 }
-
-              
             }
-          
-
         }
-       
     }
 
 }

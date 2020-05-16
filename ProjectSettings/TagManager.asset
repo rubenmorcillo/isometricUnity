@@ -11,6 +11,8 @@ TagManager:
   - NPC
   - puertaD
   - puertaI
+  - Pasillo
+  - SalaCombate
   layers:
   - Default
   - TransparentFX

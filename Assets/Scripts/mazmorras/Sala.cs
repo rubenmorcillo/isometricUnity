@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class Sala : MonoBehaviour
 {
-
+    public GameObject puntoUnion;
+    public int anchoInicio;
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("iniciando " + gameObject);
         NavMeshBuilder.ClearAllNavMeshes();
         NavMeshBuilder.BuildNavMeshAsync();
+        
         
     }
 

@@ -13,10 +13,16 @@ public class Sala : MonoBehaviour
     void Start()
     {
         Debug.Log("iniciando " + gameObject);
+        updateNavMesh();
+        
+        
+    }
+
+    public void updateNavMesh()
+    {
+        Debug.Log("redibujando navegación por orden de " + name);
         NavMeshBuilder.ClearAllNavMeshes();
         NavMeshBuilder.BuildNavMeshAsync();
-        
-        
     }
 
     public Mesh getGeneralMesh()

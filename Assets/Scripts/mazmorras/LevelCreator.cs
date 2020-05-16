@@ -127,7 +127,7 @@ public class LevelCreator : MonoBehaviour
         prefab = Instantiate(prefab, gameObject.transform);
 
         Sala pasillo = prefab.GetComponent<Sala>();
-
+        Quaternion rotacionPuerta = puerta.GetComponentInParent<Transform>().rotation;
         //switch (orientacion)
         //{
         //    case orientacionEnum.Abajo:
@@ -147,10 +147,22 @@ public class LevelCreator : MonoBehaviour
         //        rotacion = new Vector3(0, 0, 0);
         //        break;
         //}
+        Vector3 posicionFinal = salaActiva.GetComponent<Sala>().puntoUnion.transform.position;
+        Debug.Log("la rotacion de la puerta es " + rotacionPuerta);
+        if (rotacionPuerta == new Quaternion(0, 1.0f, 0, 0))
+        {
+            Debug.Log("puerta a la derecha");
+            posicionFinal -= new Vector3(0.5f, 0, 0.5f);
+        }
+        else if (rotacionPuerta == new Quaternion(0, 0, 0, 1.0f))
+        {
+            Debug.Log("puerta a la izquierda");
+            posicionFinal += new Vector3(-0.5f, 0, 0.5f);
+        }
 
-
-        prefab.transform.rotation = puerta.GetComponentInParent<Transform>().rotation;
-        prefab.transform.Translate(salaActiva.GetComponent<Sala>().puntoUnion.transform.position, transform);
+        prefab.transform.rotation = rotacionPuerta;
+        prefab.transform.Translate(posicionFinal, transform);
+        Debug.Log("me estoy moviendo a  " + posicionFinal);
         pasillo.updateNavMesh();
         salaActiva = prefab;
         

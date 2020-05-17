@@ -317,6 +317,7 @@ MonoBehaviour:
   - {fileID: 8527977425199677853, guid: c650d88299d6dfd47a8b347a5593b1f5, type: 3}
   - {fileID: 8543653235820327640, guid: fbaa677a2bada6a47bea7836f7b85887, type: 3}
   - {fileID: 6780632095073868871, guid: f965033dede6fc34c9e7379a6297f971, type: 3}
+  - {fileID: 7127506260712044834, guid: d289aad0ceaaed94281d25a155d91b4a, type: 3}
   player: {fileID: 2631726817811100127, guid: f847430e1b97ddc409882f9c993e279e, type: 3}
   unidades:
   - {fileID: 2695606857811973687, guid: f6d118e590886014b98657adb5e60c41, type: 3}

@@ -19,7 +19,7 @@ public class LevelCreator : MonoBehaviour
     List<GameObject> pasillos = new List<GameObject>();
     List<GameObject> salasInicio = new List<GameObject>();
 
-    List<GameObject> salasMazmorra = new List<GameObject>();
+  //  List<GameObject> salasMazmorra = new List<GameObject>();
 
     [SerializeField]
     GameObject salaActiva;
@@ -42,14 +42,14 @@ public class LevelCreator : MonoBehaviour
     {
         foreach(GameObject p in prefabs)
         {
-            if (p.name.Contains("Pasillo"))
+            if (p.CompareTag("Pasillo"))
             {
                 pasillos.Add(p);
             }
-            else if(p.name.Contains("SalaCombate"))
+            else if(p.CompareTag("SalaCombate"))
             {
                 salasCombate.Add(p);
-            }else if(p.name.Contains("Inicio"))
+            }else if(p.CompareTag("Respawn"))
             {
                 salasInicio.Add(p);
             }
@@ -61,8 +61,9 @@ public class LevelCreator : MonoBehaviour
     void CrearSalaInicial()
     {
         GameObject sala = Instantiate(salasInicio[0], gameObject.transform);
-        sala.transform.Rotate(new Vector3(0, 90, 0));
-        salasMazmorra.Add(sala);
+        //a veces querremos la sala inicial rotada, otras veces no.
+       // sala.transform.Rotate(new Vector3(0, 90, 0));
+        //salasMazmorra.Add(sala);
        
         salaActiva = sala;
     }
@@ -73,83 +74,43 @@ public class LevelCreator : MonoBehaviour
 
         GameObject prefab;
         Sala salaSiguiente;
-        //Debug.Log("el tag actual " +salaActual.tag);
-       // orientacionEnum orientacion = CalcularOrientacion(salaActual.getGeneralMesh(), puerta);
+        System.Random rnd = new System.Random();
         
         ////al principio siempre vamos a crear un pasillo
         if (salaActual.CompareTag("Respawn"))
         {
-            prefab = pasillos[0]; //sustituir por pasillo random
+            Debug.Log("hay " + pasillos.Count + " pasillos");
+            prefab = pasillos[1]; 
             CrearPrefab(prefab, puerta);
             
         }else if (salaActual.CompareTag("Pasillo"))
         {
-            Debug.Log("estamos en un pasillo");
-            prefab = salasCombate[0]; //sustituir por sala random
+
+            prefab = salasCombate[rnd.Next(salasCombate.Count)]; 
+           // prefab = salasCombate[1];
             CrearPrefab(prefab, puerta);
         }
         else if (salaActual.CompareTag("SalaCombate"))
         {
-            prefab = pasillos[0]; //sustituir por pasillo random
+            prefab = pasillos[rnd.Next(pasillos.Count)];
+           // prefab = pasillos[1];
             CrearPrefab(prefab, puerta);
         }
 
-
-        //if (!salaActual.CompareTag("Pasillo"))
-        //{
-        //    //si la sala activa no es un pasillo, tenemos que colocar un pasillo. Porque después de cada Sala hay un pasillo.
-        //    Debug.Log(salaActiva.GetComponent<Sala>().puntoUnion.transform);
-        //    prefab = Instantiate(pasillos[0], gameObject.transform);
-        //    salaSiguiente = prefab.GetComponent<Sala>();
-        //    prefab.transform.Translate(salaActual.puntoUnion.transform.position - new Vector3(0, 0, salaSiguiente.anchoInicio + 0.5f));
-        //}
-        //else
-        //{
-        //    prefab = salasCombate[new System.Random().Next(salasCombate.Count)];
-        //    prefab = Instantiate(prefab, gameObject.transform);
-        //    salaSiguiente = prefab.GetComponent<Sala>();
-        //    prefab.transform.Translate(salaActual.puntoUnion.transform.position + new Vector3(0, 0, salaSiguiente.anchoInicio + 0.5f));
-        //}
-
-
-        //prefab.transform.Rotate(new Vector3(0, 90, 0));
-        //salaActiva = prefab;
-
-        // Debug.Log("el nuevo tag " + salaSiguiente.tag);
         //tenemos que abrir la puerta y eliminar la anterior sala
 
     }
 
     void CrearPrefab(GameObject prefab, Puerta puerta)
     {
-        //SOLO ESTÁ PROBADO CON PUERTAS CON ORIENTACION NORTE
         Debug.Log("La puerta está en " + puerta.transform.position);
        
         prefab = Instantiate(prefab, gameObject.transform);
 
         Sala pasillo = prefab.GetComponent<Sala>();
         Quaternion rotacionPuerta = puerta.GetComponentInParent<Transform>().rotation;
-        //switch (orientacion)
-        //{
-        //    case orientacionEnum.Abajo:
-        //        rotacion = new Vector3(0,-90, 0);
-        //        break;
-        //    case orientacionEnum.Arriba:
-        //       rotacion = new Vector3(0, 90, 0);
-        //        Debug.Log("el centro está en " + salaActual.getGeneralMesh().bounds.center);
-        //        break;
-        //    case orientacionEnum.Izquierda:
-        //       // prefab.transform.Rotate(new Vector3(0, 90, 0));
-        //        break;
-        //    case orientacionEnum.Derecha:
-        //        //prefab.transform.Rotate(new Vector3(0, 90, 0));
-        //        break;
-        //    default:
-        //        rotacion = new Vector3(0, 0, 0);
-        //        break;
-        //}
+       
         Vector3 posicionFinal = salaActiva.GetComponent<Sala>().puntoUnion.transform.position;
-        Debug.Log("la rotacion de la puerta es " + rotacionPuerta);
         if (new Quaternion(0, 1.0f, 0, 0).Compare(rotacionPuerta, 2) || new Quaternion(0, -1.0f, 0, 0).Compare(rotacionPuerta, 2))
         {
             Debug.Log("puerta a la derecha");
@@ -175,54 +136,7 @@ public class LevelCreator : MonoBehaviour
 
     }
 
-    //private orientacionEnum CalcularOrientacion(Mesh meshSala, Puerta puerta)
-    //{
-    //    Debug.Log("la rotacion es "  +puerta.GetComponentInParent<Transform>().rotation);
-    //    Vector3 centro = meshSala.bounds.center;
-    //    Vector3 posicionPuerta = puerta.transform.position;
-
-    //    float difX = centro.x - posicionPuerta.x;
-    //    float difZ = centro.z + posicionPuerta.z;
-
-    //    //esto no se si va a funcionar en todos los casos...quizá falle con posiciones muy locas. Probar en mapas grandes
-    //    if (difX < 0)
-    //    {
-    //        difX *= -1;
-    //    }
-    //    if(difZ < 0)
-    //    {
-    //        difZ *= -1;
-    //    }
-       
-    //    //buscar una manera de comparar esto absolutamente
-    //    if (difX > difZ)
-    //    {
-    //        if (posicionPuerta.x > centro.x)
-    //        {
-    //            Debug.Log("la puerta está a la derecha");
-    //            return orientacionEnum.Derecha;
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("la puerta está a la izquierda");
-    //            return orientacionEnum.Izquierda;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        if (posicionPuerta.z > centro.z)
-    //        {
-    //            Debug.Log("la puerta está arriba");
-    //            return orientacionEnum.Arriba;
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("la puerta está abajo");
-    //            return orientacionEnum.Abajo;
-    //        }
-    //    }
-    //}
-
+   
     
     void posicionarJugador()
     {

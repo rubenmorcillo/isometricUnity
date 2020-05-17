@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -149,15 +150,20 @@ public class LevelCreator : MonoBehaviour
         //}
         Vector3 posicionFinal = salaActiva.GetComponent<Sala>().puntoUnion.transform.position;
         Debug.Log("la rotacion de la puerta es " + rotacionPuerta);
-        if (rotacionPuerta == new Quaternion(0, 1.0f, 0, 0))
+        if (new Quaternion(0, 1.0f, 0, 0).Compare(rotacionPuerta, 2) || new Quaternion(0, -1.0f, 0, 0).Compare(rotacionPuerta, 2))
         {
             Debug.Log("puerta a la derecha");
             posicionFinal -= new Vector3(0.5f, 0, 0.5f);
         }
-        else if (rotacionPuerta == new Quaternion(0, 0, 0, 1.0f))
+        else if (new Quaternion(0, 0, 0, 1.0f).Compare(rotacionPuerta, 2) || new Quaternion(0, 0, 0, -1.0f).Compare(rotacionPuerta, 2))
         {
             Debug.Log("puerta a la izquierda");
             posicionFinal += new Vector3(-0.5f, 0, 0.5f);
+        }
+        else if(!new Quaternion(0, 0.7f, 0, 0.7f).Compare(rotacionPuerta, 2))
+        {
+            Debug.Log("puerta al sur");
+            posicionFinal -= new Vector3(1.0f, 0, 0);
         }
 
         prefab.transform.rotation = rotacionPuerta;

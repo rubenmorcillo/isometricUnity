@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246bcd52d7bc4df468e76cfcd4ff2306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntoUnion: {fileID: 3137273964603147275}
+  puntoUnion: {fileID: 5324289593569831604}
   anchoInicio: 0
 --- !u!1001 &1711796028740250801
 PrefabInstance:

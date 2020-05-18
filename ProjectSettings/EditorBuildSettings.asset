@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/escenario1.unity
     guid: 74e50248941817c4aa83c981ba1ec2b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/exterior_01.unity
     guid: 520f75af2ff9775418156fa0aa12123b
+  - enabled: 1
+    path: Assets/Scenes/mazmorra_01.unity
+    guid: b9ec111495a62514bbb6fffe5d61a14e
   m_configObjects: {}

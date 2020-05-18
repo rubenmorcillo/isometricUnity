@@ -19,13 +19,17 @@ public class LevelCreator : MonoBehaviour
     List<GameObject> pasillos = new List<GameObject>();
     List<GameObject> salasInicio = new List<GameObject>();
 
-  //  List<GameObject> salasMazmorra = new List<GameObject>();
+    List<GameObject> salasMazmorra = new List<GameObject>();
 
     [SerializeField]
     GameObject salaActiva;
 
+    NavMeshSurface navegacion;
+
+
     void Start()
     {
+        navegacion = gameObject.AddComponent<NavMeshSurface>();
         FiltrarPrefabs();
         CrearSalaInicial();
         posicionarJugador();
@@ -62,10 +66,9 @@ public class LevelCreator : MonoBehaviour
     {
         GameObject sala = Instantiate(salasInicio[0], gameObject.transform);
         //a veces querremos la sala inicial rotada, otras veces no.
-       // sala.transform.Rotate(new Vector3(0, 90, 0));
-        //salasMazmorra.Add(sala);
-       
+        // sala.transform.Rotate(new Vector3(0, 90, 0));
         salaActiva = sala;
+        navegacion.BuildNavMesh();
     }
 
     public void abrirPuerta(Puerta puerta)
@@ -96,7 +99,7 @@ public class LevelCreator : MonoBehaviour
            // prefab = pasillos[1];
             CrearPrefab(prefab, puerta);
         }
-
+        navegacion.UpdateNavMesh(navegacion.navMeshData);
         //tenemos que abrir la puerta y eliminar la anterior sala
 
     }
@@ -130,11 +133,11 @@ public class LevelCreator : MonoBehaviour
         prefab.transform.rotation = rotacionPuerta;
         prefab.transform.Translate(posicionFinal, transform);
         Debug.Log("me estoy moviendo a  " + posicionFinal);
-        pasillo.updateNavMesh();
         salaActiva = prefab;
-        
 
     }
+
+   
 
    
     

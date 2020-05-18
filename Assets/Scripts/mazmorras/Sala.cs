@@ -1,19 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
-using UnityEditor.AI;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Sala : MonoBehaviour
 {
     public GameObject puntoUnion;
+    NavMeshSurface navSur;
+    NavMeshSurface[] navMeshSuelo;
+
     public int anchoInicio;
     
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("iniciando " + gameObject);
-        updateNavMesh();
+        navSur = GetComponent<NavMeshSurface>();
+       // navMeshSuelo = GetComponentsInChildren<NavMeshSurface>();
+        //updateNavMesh();
         
         
     }
@@ -21,8 +26,12 @@ public class Sala : MonoBehaviour
     public void updateNavMesh()
     {
         Debug.Log("redibujando navegación por orden de " + name);
-        NavMeshBuilder.ClearAllNavMeshes();
-        NavMeshBuilder.BuildNavMeshAsync();
+        //foreach (NavMeshSurface surfa in navMeshSuelo)
+        //{
+        //    surfa.BuildNavMesh();
+        //}
+        navSur.BuildNavMesh();
+        
     }
 
     public Mesh getGeneralMesh()

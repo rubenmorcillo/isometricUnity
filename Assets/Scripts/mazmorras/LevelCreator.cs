@@ -66,7 +66,7 @@ public class LevelCreator : MonoBehaviour
     {
         GameObject sala = Instantiate(salasInicio[0], gameObject.transform);
         //a veces querremos la sala inicial rotada, otras veces no.
-        // sala.transform.Rotate(new Vector3(0, 90, 0));
+         sala.transform.Rotate(new Vector3(0, 90, 0));
         salaActiva = sala;
         navegacion.BuildNavMesh();
     }

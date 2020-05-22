@@ -35,6 +35,8 @@ public LayerMask mascMov;
 
     }
 
+   
+
     void CheckMousse()
     {
         if (Input.GetMouseButtonDown(0))

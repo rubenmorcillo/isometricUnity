@@ -66,6 +66,8 @@
     <Compile Include="Assets\LevelBuilding\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Casilla.cs" />
+    <Compile Include="Assets\Scripts\Evento.cs" />
+    <Compile Include="Assets\Scripts\intentoCoruti.cs" />
     <Compile Include="Assets\Scripts\LogicaJugadorMouse.cs" />
     <Compile Include="Assets\Scripts\mazmorras\EstadosMazmorra.cs" />
     <Compile Include="Assets\Scripts\mazmorras\LevelCreator.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Assets\Scripts\oneTile\TurnManager.cs" />
     <Compile Include="Assets\Scripts\TacticsCamera.cs" />
     <Compile Include="Assets\Scripts\Turnos.cs" />
+    <Compile Include="Assets\Scripts\tutorial\tutorialManager.cs" />
     <None Include="Assets\Sci-Fi Styled Modular Pack\Readme.txt" />
     <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />
     <Reference Include="Unity.Timeline.Editor">

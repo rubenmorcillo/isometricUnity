@@ -63,10 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshLink.cs" />
-    <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifier.cs" />
-    <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
-    <Compile Include="Assets\NavMeshComponents\Scripts\NavMeshSurface.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\Scripts\NavMeshLink.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\Scripts\NavMeshModifier.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\Scripts\NavMeshModifierVolume.cs" />
+    <Compile Include="Assets\Scripts\NavMeshComponents\Scripts\NavMeshSurface.cs" />
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/Rubén/Documents/Unity projects/probando proGrids/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>

@@ -47,7 +47,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 494}
   m_MaxSize: {x: 14004, y: 14044}
   vertical: 0
-  controlID: 17
+  controlID: 35
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -764,20 +764,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/Salas
+    - Assets/LevelBuilding/AssetStoreOriginals/_SNAPS_PrototypingAssets/About
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefabs/Salas
+  - Assets/LevelBuilding/AssetStoreOriginals/_SNAPS_PrototypingAssets/About
   m_LastFoldersGridSize: 96
   m_LastProjectPath: "C:\\Users\\Rub\xE9n\\Documents\\Unity projects\\probando proGrids"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8a3c0000
-    m_LastClickedID: 15498
-    m_ExpandedIDs: 000000007e320000f433000076340000f0360000f23900003c3b00008a3c00008e3c0000443f00005c3f000032410000b841000002420000784300001c4700008a480000d4480000fa48000024490000a0490000a8660000aa660000ac660000ae660000b0660000b2660000b4660000b6660000b8660000ba660000bc660000be660000c0660000
+    m_SelectedIDs: 9c480000
+    m_LastClickedID: 18588
+    m_ExpandedIDs: 00000000883200000034000082340000fc360000fe390000963c00009c3c0000523f00006a3f000044410000144200008c4300002e4700009c480000e84800000e49000038490000b44900009e6e0000a06e0000a26e0000a46e0000a66e0000a86e0000aa6e0000ac6e0000ae6e0000b06e0000b26e0000b46e0000b66e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -805,7 +805,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000007e320000f433000076340000f23900008a3c00008e3c0000443f00005c3f00003241000002420000784300001c4700008a480000d4480000fa48000024490000a0490000a8660000aa660000ac660000ae660000b0660000b2660000b4660000b6660000b8660000ba660000bc660000be660000c0660000
+    m_ExpandedIDs: 00000000883200000034000082340000fc360000fe390000963c00009c3c0000b23d0000523f00006a3f000044410000144200008c4300002e4700009c480000e84800000e49000038490000b44900009e6e0000a06e0000a26e0000a46e0000a66e0000a86e0000aa6e0000ac6e0000ae6e0000b06e0000b26e0000b46e0000b66e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -926,9 +926,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e44b0000
-      m_LastClickedID: 19428
-      m_ExpandedIDs: 2444f7ff3641f8ffba84f8ff9289f8ffd00ef9ff9a0ff9fff814f9ff141af9ff3e9efbffbca1fbffa81bfcff261ffcff8801fdffec2ffdffec30fdffe832fdfff2b8feff740bffff70fbffffe44b0000
+      m_SelectedIDs: 663b0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 70fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1021,11 +1021,11 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.46373746, y: 0.023924408, z: -0.012508495, w: 0.88556373}
     speed: 2
-    m_Value: {x: 0.46373647, y: 0.023924356, z: -0.012508468, w: 0.8855618}
+    m_Value: {x: -0.46373743, y: -0.023924407, z: 0.012508495, w: -0.8855637}
   m_Size:
     m_Target: 50.521652
     speed: 2
-    m_Value: 48.346077
+    m_Value: 50.521652
   m_Ortho:
     m_Target: 0
     speed: 2

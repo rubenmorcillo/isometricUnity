@@ -104,6 +104,8 @@ public class LevelCreator : MonoBehaviour
 
     }
 
+   
+
     void CrearPrefab(GameObject prefab, Puerta puerta)
     {
         Debug.Log("La puerta está en " + puerta.transform.position);

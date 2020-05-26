@@ -26,6 +26,8 @@ public LayerMask mascMov;
         }
        
         levelCreator = FindObjectOfType<LevelCreator>();
+
+        cam.GetComponentInParent<CameraController>().SetTarget(gameObject);
     }
 
     void Update()

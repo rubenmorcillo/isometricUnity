@@ -66,15 +66,13 @@ public LayerMask mascMov;
         {
             if (hit.collider.gameObject.layer == 9 || hit.collider.tag == "Puerta")
             {
-                Debug.Log("pulsa espacio para continuar");
+                //Debug.Log("pulsa espacio para continuar");
                 if (Input.GetKey(KeyCode.Space))
                 {
                     //Debug.Log("Estoy abriendo la puerta " + hit.collider.GetComponentInParent<Puerta>());
                     Puerta puerta = hit.collider.GetComponentInParent<Puerta>();
                     puerta.GetComponentInChildren<Animator>().SetBool("open", true);
-                    levelCreator.abrirPuerta(puerta);
-                    
-                    //GameObject.Destroy(gameObject.GetComponentInChildren<Puerta>());
+                    levelCreator.nuevaSala(puerta);
                 }
             }
         }

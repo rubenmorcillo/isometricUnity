@@ -118,7 +118,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8264227675210610734}
   - component: {fileID: 196453560053195923}
-  - component: {fileID: 323124939937735126}
   m_Layer: 0
   m_Name: salidaWena
   m_TagString: Puerta
@@ -154,19 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2174e03d540dbc842b44a0af299bcb81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &323124939937735126
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8110228179137657644}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.734598, y: 2.0158768, z: 0.10047579}
-  m_Center: {x: 0.04640615, y: 0.5079384, z: -0.07034373}
 --- !u!1001 &1941243056582350077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,39 +224,55 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 6473736, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 408768, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 470226, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
@@ -290,23 +292,29 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalPosition.x
+    - target: {fileID: 6592720, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalPosition.y
+    - target: {fileID: 6599258, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 450934, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
+    - target: {fileID: 6560220, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6554958, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6599258, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - {fileID: 6592720, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - {fileID: 6560220, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - {fileID: 6554958, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - {fileID: 6473736, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
+    - {fileID: 2326234, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d927feb0fbf1a7429c095369d395de7, type: 3}
 --- !u!4 &1941243056582748357 stripped
 Transform:

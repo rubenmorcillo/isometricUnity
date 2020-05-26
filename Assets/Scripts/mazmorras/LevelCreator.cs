@@ -64,47 +64,55 @@ public class LevelCreator : MonoBehaviour
 
     void CrearSalaInicial()
     {
-        GameObject sala = Instantiate(salasInicio[0], gameObject.transform);
+        System.Random rnd = new System.Random();
+        GameObject sala = Instantiate(salasInicio[rnd.Next(salasInicio.Count)], gameObject.transform);
         //a veces querremos la sala inicial rotada, otras veces no.
-         sala.transform.Rotate(new Vector3(0, 90, 0));
+        sala.transform.Rotate(new Vector3(0, 90, 0));
         salaActiva = sala;
         navegacion.BuildNavMesh();
+        salasMazmorra.Add(sala);
     }
 
-    public void abrirPuerta(Puerta puerta)
+    public void nuevaSala(Puerta puerta)
     {
         Sala salaActual = salaActiva.GetComponent<Sala>();
 
         GameObject prefab;
-        Sala salaSiguiente;
         System.Random rnd = new System.Random();
         
-        ////al principio siempre vamos a crear un pasillo
-        if (salaActual.CompareTag("Respawn"))
-        {
-            Debug.Log("hay " + pasillos.Count + " pasillos");
-            prefab = pasillos[1]; 
-            CrearPrefab(prefab, puerta);
-            
-        }else if (salaActual.CompareTag("Pasillo"))
-        {
 
+        //al principio siempre vamos a crear un pasillo
+        //if (salaActual.CompareTag("Respawn"))
+        //{
+        //   // Debug.Log("hay " + pasillos.Count + " pasillos");
+        //    prefab = pasillos[1]; 
+        //    CrearPrefab(prefab, puerta);
+            
+        //}else 
+
+        if (salaActual.CompareTag("Pasillo"))
+        {
+           // Debug.Log("hay " + salasCombate.Count + " salas");
             prefab = salasCombate[rnd.Next(salasCombate.Count)]; 
            // prefab = salasCombate[1];
             CrearPrefab(prefab, puerta);
-        }
-        else if (salaActual.CompareTag("SalaCombate"))
+        }else
         {
+            //Debug.Log("hay " + pasillos.Count + " pasillos");
             prefab = pasillos[rnd.Next(pasillos.Count)];
            // prefab = pasillos[1];
             CrearPrefab(prefab, puerta);
         }
         navegacion.UpdateNavMesh(navegacion.navMeshData);
-        //tenemos que abrir la puerta y eliminar la anterior sala
+        salasMazmorra.Add(prefab);
+        DesactivarPuerta(puerta);
 
     }
 
-   
+    void DesactivarPuerta(Puerta puerta)
+    {
+        puerta.GetComponentInChildren<BoxCollider>().enabled = false ;
+    }
 
     void CrearPrefab(GameObject prefab, Puerta puerta)
     {
@@ -152,7 +160,8 @@ public class LevelCreator : MonoBehaviour
         {
           
             ///player.AddComponent<LogicaJugadorMouse>();
-            player = Instantiate(player, spawn.transform);
+            player = Instantiate(player, gameObject.transform);
+            player.transform.Translate(spawn.transform.position);
         }
         else
         {

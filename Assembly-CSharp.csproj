@@ -64,11 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\LevelBuilding\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Evento.cs" />
-    <Compile Include="Assets\Scripts\LogicaJugadorMouse.cs" />
-    <Compile Include="Assets\Scripts\mazmorras\EstadosMazmorra.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\CameraController.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\CombateManager.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\EstadosJuego.cs" />
     <Compile Include="Assets\Scripts\mazmorras\LevelCreator.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\LogicaJugadorMouse.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\mazmorras\Puerta.cs" />
     <Compile Include="Assets\Scripts\mazmorras\Sala.cs" />
     <Compile Include="Assets\Scripts\mazmorras\tactics\NPCMove.cs" />
@@ -76,7 +79,6 @@
     <Compile Include="Assets\Scripts\mazmorras\tactics\TacticsMove.cs" />
     <Compile Include="Assets\Scripts\mazmorras\tactics\Tile.cs" />
     <Compile Include="Assets\Scripts\mazmorras\tactics\TurnManager.cs" />
-    <Compile Include="Assets\Scripts\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\tutorial\tutorialManager.cs" />
     <None Include="Assets\Sci-Fi Styled Modular Pack\Readme.txt" />
     <None Include="Assets\ToonSoldiers_demo\ToonSoldiers_demo.txt" />

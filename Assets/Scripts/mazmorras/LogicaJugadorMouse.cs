@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 
 public class LogicaJugadorMouse : MonoBehaviour
@@ -10,7 +8,6 @@ public LayerMask mascMov;
     Camera cam;
 	public GameObject camPos;
     MotorJugador motor;
-    LevelCreator levelCreator;
 
 
     void Start()
@@ -24,17 +21,20 @@ public LayerMask mascMov;
         {
             motor = GetComponent<MotorJugador>();
         }
-       
-        levelCreator = FindObjectOfType<LevelCreator>();
 
         cam.GetComponentInParent<CameraController>().SetTarget(gameObject);
     }
 
     void Update()
     {
-        CheckMousse();
-        CheckPuerta();
 
+        if (EstadosJuego.Explorar())
+        {
+            CheckMousse();
+            CheckPuerta();
+            CheckSala();
+        }
+       
     }
 
    
@@ -62,9 +62,9 @@ public LayerMask mascMov;
     public void CheckPuerta()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.0f, 9))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.0f))
         {
-            if (hit.collider.gameObject.layer == 9 || hit.collider.tag == "Puerta")
+            if (hit.collider.tag == "Puerta")
             {
                 //Debug.Log("pulsa espacio para continuar");
                 if (Input.GetKey(KeyCode.Space))
@@ -72,8 +72,22 @@ public LayerMask mascMov;
                     //Debug.Log("Estoy abriendo la puerta " + hit.collider.GetComponentInParent<Puerta>());
                     Puerta puerta = hit.collider.GetComponentInParent<Puerta>();
                     puerta.GetComponentInChildren<Animator>().SetBool("open", true);
-                    levelCreator.nuevaSala(puerta);
+                    LevelManager.abrirPuerta(puerta);
                 }
+            }
+        }
+    }
+
+    void CheckSala()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.0f))
+        {
+            if (hit.collider.tag == "Combate")
+            {
+                Debug.Log("combate");
+                EstadosJuego.setCombate(true);
+               // motor.MoverAlPunto(transform.position);
             }
         }
     }

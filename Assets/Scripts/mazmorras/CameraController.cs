@@ -3,10 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CameraController : MonoBehaviour
 {
-
     public float movementSpeed;
     public float movementTime;
     public float margen = 10f;
@@ -20,13 +20,24 @@ public class CameraController : MonoBehaviour
     public void SetTarget(GameObject target)
     {
         this.target = target;
-       
+    }
+
+    private void Start()
+    {
+        //esto lo tendría que hacer en el SceneManager
+        //lo hago aqui porque no tengo otro sitio de momento
+        Debug.Log("iniciando el manager");
+        LevelCreator.Init();
+        LevelManager.Init();
     }
 
     void Update()
     {
-        HandleMovementInput();
-      
+        if (EstadosJuego.Iniciado())
+        {
+            HandleMovementInput();
+        }
+
     }
 
     void HandleMovementInput()

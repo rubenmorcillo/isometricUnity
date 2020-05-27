@@ -15,7 +15,7 @@ public class Sala : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("iniciando " + gameObject);
+        Debug.Log(name +": iniciandome... ");
         navSur = GetComponent<NavMeshSurface>();
        // navMeshSuelo = GetComponentsInChildren<NavMeshSurface>();
         //updateNavMesh();
@@ -25,7 +25,7 @@ public class Sala : MonoBehaviour
 
     public void updateNavMesh()
     {
-        Debug.Log("redibujando navegación por orden de " + name);
+        Debug.Log(name +": Redibujando navegación... ");
         //foreach (NavMeshSurface surfa in navMeshSuelo)
         //{
         //    surfa.BuildNavMesh();

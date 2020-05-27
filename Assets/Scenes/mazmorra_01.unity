@@ -362,51 +362,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 983abae3a9d23284f82ebc8b4ca57544, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 910177ec26b76c14996c2d53627a6def, type: 3}
---- !u!1 &518456151
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 518456153}
-  - component: {fileID: 518456152}
-  m_Layer: 0
-  m_Name: MaquinaEstados
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &518456152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518456151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9962a67ba9f84d640b54e676717a6d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combate: 0
-  explorar: 0
---- !u!4 &518456153
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 518456151}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6504871, y: 0.5000005, z: 3.1032925}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &706050560
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +468,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1074694012}
-  - component: {fileID: 1074694013}
   - component: {fileID: 1074694014}
   m_Layer: 0
   m_Name: Mapa
@@ -521,7 +475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1074694012
 Transform:
   m_ObjectHideFlags: 0
@@ -536,28 +490,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1074694013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1074694011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22312fb80fe1d5149a2211e89742eee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabs:
-  - {fileID: 333980633609674748, guid: 8205e85ba69fccd4cbe38cdba86421a7, type: 3}
-  - {fileID: 2291930437572865475, guid: 111bfbcb1d541094d8a5265af32188b7, type: 3}
-  - {fileID: 4188389878463549998, guid: 2d34a5dadf6b2ca4e8cbe5af3284bcc9, type: 3}
-  - {fileID: 8587953960196296471, guid: 7b981627e994deb43956d9d5822042de, type: 3}
-  - {fileID: 8721561886188173761, guid: 73f1fbfdb807f2d4c8a663a37a84206f, type: 3}
-  player: {fileID: 2631726817811100127, guid: f847430e1b97ddc409882f9c993e279e, type: 3}
-  unidades:
-  - {fileID: 2695606857811973687, guid: f6d118e590886014b98657adb5e60c41, type: 3}
-  salaActiva: {fileID: 0}
 --- !u!114 &1074694014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,9 +616,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5681893929486660775, guid: f482965bd85487e4880cd4848c140b0d,
         type: 3}
+      propertyPath: prefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681893929486660775, guid: f482965bd85487e4880cd4848c140b0d,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5681893929486660775, guid: f482965bd85487e4880cd4848c140b0d,
+        type: 3}
+      propertyPath: prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 333980633609674748, guid: 8205e85ba69fccd4cbe38cdba86421a7,
+        type: 3}
     - target: {fileID: 5681893928666073207, guid: f482965bd85487e4880cd4848c140b0d,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -769,7 +712,7 @@ PrefabInstance:
     - target: {fileID: 6107753898302182250, guid: 38cd1323093ec7d4888880d441f820db,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6107753898302182250, guid: 38cd1323093ec7d4888880d441f820db,
         type: 3}

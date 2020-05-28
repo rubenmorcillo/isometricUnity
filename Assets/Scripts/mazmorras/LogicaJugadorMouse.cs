@@ -8,11 +8,11 @@ public LayerMask mascMov;
     Camera cam;
 	public GameObject camPos;
     MotorJugador motor;
-
-
+    LevelManager levelManager;
     void Start()
     {
         cam = Camera.main;
+        levelManager = LevelManager.instance;
         if (motor == null)
         {
             motor = gameObject.AddComponent<MotorJugador>();
@@ -28,7 +28,7 @@ public LayerMask mascMov;
     void Update()
     {
 
-        if (EstadosJuego.Explorar())
+        if (EstadosJuego.EstadoActual() == EstadosJuego.Estado.EXPLORAR)
         {
             CheckMousse();
             CheckPuerta();
@@ -72,7 +72,8 @@ public LayerMask mascMov;
                     //Debug.Log("Estoy abriendo la puerta " + hit.collider.GetComponentInParent<Puerta>());
                     Puerta puerta = hit.collider.GetComponentInParent<Puerta>();
                     puerta.GetComponentInChildren<Animator>().SetBool("open", true);
-                    LevelManager.abrirPuerta(puerta);
+                    levelManager.abrirPuerta(puerta);
+                    
                 }
             }
         }
@@ -86,8 +87,8 @@ public LayerMask mascMov;
             if (hit.collider.tag == "Combate")
             {
                 Debug.Log("combate");
-                EstadosJuego.setCombate(true);
-               // motor.MoverAlPunto(transform.position);
+                motor.MoverAlPunto(transform.position); //con esto lo dejamos quieto cuando se active el evento
+                levelManager.activarCombate();
             }
         }
     }

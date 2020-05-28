@@ -19,23 +19,24 @@ public static class LevelCreator
 
     static GameObject salaActiva;
 
-    static  NavMeshSurface navegacion;
+    static NavMeshSurface navegacion;
 
     static GameObject gameObject;
 
     public static void Init()
     {
-        gameObject = Object.Instantiate(new GameObject("Mapa"));
-        gameObject.transform.position = new Vector3(0.5f, 0, 0);
+        Debug.Log("LC: me inicio");
+        //gameObject = Object.Instantiate(new GameObject("Mapa"), new Vector3(0.5f, 0, 0), Quaternion.identity ); //CON ESTO ME LO CREA DOBLE (WTF???)
+
+        gameObject = new GameObject("Mapa");
+        gameObject.AddComponent<Transform>();
+        gameObject.transform.Translate(new Vector3(0.5f, 0, 0));
+       
         navegacion = gameObject.AddComponent<NavMeshSurface>();
         player = (GameObject)Resources.Load("testPlayer");
         FiltrarPrefabs();
     }
 
-    public static void SetGameObject(GameObject objeto)
-    {
-        gameObject = objeto;
-    }
 
     public static void FiltrarPrefabs()
     {
@@ -54,7 +55,7 @@ public static class LevelCreator
                 salasInicio.Add(p);
             }
         }
-        Debug.Log("He filtrado " + salasInicio.Count +" salas de inicio \n" +
+        Debug.Log("LC: He filtrado " + salasInicio.Count +" salas de inicio \n" +
             "// filtrado" + salasCombate.Count + " salas de combate \n" +
             "// filtrado " + pasillos.Count + " pasillos");
     }
@@ -71,7 +72,7 @@ public static class LevelCreator
         salaActiva = sala;
         navegacion.BuildNavMesh();
         salasMazmorra.Add(sala);
-        EstadosJuego.setExplorar(true);
+        EstadosJuego.activarEstado(EstadosJuego.Estado.EXPLORAR);
     }
 
     public static void nuevaSala(Puerta puerta)
@@ -167,9 +168,6 @@ public static class LevelCreator
         salaActiva = prefab;
 
     }
-
-   
-
    
     
     public static void posicionarJugador()

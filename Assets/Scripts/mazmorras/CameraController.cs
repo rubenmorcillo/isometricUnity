@@ -22,15 +22,6 @@ public class CameraController : MonoBehaviour
         this.target = target;
     }
 
-    private void Start()
-    {
-        //esto lo tendría que hacer en el SceneManager
-        //lo hago aqui porque no tengo otro sitio de momento
-        Debug.Log("iniciando el manager");
-        LevelCreator.Init();
-        LevelManager.Init();
-    }
-
     void Update()
     {
         if (EstadosJuego.Iniciado())

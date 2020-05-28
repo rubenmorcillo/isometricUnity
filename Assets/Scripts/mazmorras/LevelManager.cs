@@ -1,29 +1,61 @@
 ﻿
 using UnityEngine;
 
-public static class LevelManager
+public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static LevelManager instance = null;
 
+    GameObject playerAvatar;
 
-   
-    public static void Init()
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(this);
+
+    }
+
+    public void Start()
     {
         Debug.Log("LevelManager: me inicio");
-        LevelCreator.CrearSalaInicial();
-        LevelCreator.posicionarJugador();
+        //obtengo los datos
+       
+        //inico los otros managers
+        LevelCreator.Init();
+
+
+
+
+
+        //de momento...
+        iniciarMazmorra();
         
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    private void iniciarMazmorra()
+    {
+        LevelCreator.CrearSalaInicial();
+        LevelCreator.posicionarJugador();
+        EstadosJuego.activarEstado(EstadosJuego.Estado.EXPLORAR);
+    }
 
-    public static void abrirPuerta(Puerta puerta)
+    public void abrirPuerta(Puerta puerta)
     {
         LevelCreator.nuevaSala(puerta);
+    }
+
+    public void activarCombate()
+    {
+        //desactivo a mi player
+        //instancio mi muñeco (cuales?)
+
+        //
     }
 
    

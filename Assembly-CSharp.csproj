@@ -68,8 +68,8 @@
     <Compile Include="Assets\Scripts\mazmorras\CameraController.cs" />
     <Compile Include="Assets\Scripts\mazmorras\CombateManager.cs" />
     <Compile Include="Assets\Scripts\mazmorras\EstadosJuego.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\GameManager.cs" />
     <Compile Include="Assets\Scripts\mazmorras\LevelCreator.cs" />
-    <Compile Include="Assets\Scripts\mazmorras\LevelManager.cs" />
     <Compile Include="Assets\Scripts\mazmorras\LogicaJugadorMouse.cs" />
     <Compile Include="Assets\Scripts\mazmorras\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\mazmorras\Puerta.cs" />

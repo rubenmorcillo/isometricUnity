@@ -1,11 +1,11 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    public static LevelManager instance = null;
+    public static GameManager instance = null;
     GameObject mazmorra;
-    GameObject playerAvatar;
+    GameObject playerModel;
+    DatosPlayer datosPlayer;
 
     private void Awake()
     {
@@ -19,15 +19,17 @@ public class LevelManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
+        datosPlayer = gameObject.GetComponent<DatosPlayer>();
     }
+
+    //toDo: void CargarDatosPlayer(){}
 
     public void Start()
     {
         Debug.Log("LevelManager: me inicio");
-        //obtengo los datos
        
         //inico los otros managers
-        LevelCreator.Init();
+        LevelManager.Init();
 
 
 
@@ -40,27 +42,30 @@ public class LevelManager : MonoBehaviour
 
     private void iniciarMazmorra()
     {
-        mazmorra = LevelCreator.CrearMazmorra();
-        LevelCreator.CrearSalaInicial();
-        playerAvatar = LevelCreator.posicionarJugador();
+        mazmorra = LevelManager.CrearMazmorra();
+        LevelManager.CrearSalaInicial();
+        playerModel = LevelManager.posicionarJugador();
         EstadosJuego.activarEstado(EstadosJuego.Estado.EXPLORAR);
     }
 
     public void abrirPuerta(Puerta puerta)
     {
-        LevelCreator.nuevaSala(puerta);
+        LevelManager.nuevaSala(puerta);
     }
 
     public void activarCombate()
     {
         EstadosJuego.activarEstado(EstadosJuego.Estado.COMBATE);
 
-        //desactivo a mi avatar
-        playerAvatar.SetActive(false);
+        playerModel.SetActive(false); //desactivo a mi avatar
+        //colocarEnemigos();
+
+
+
         //instancio mi muñeco (cuales?)
         GameObject unidad = (GameObject)Resources.Load("UnidadSRC");
-        unidad = GameObject.Instantiate(unidad, LevelCreator.salaActiva.transform);
-        //
+        unidad = GameObject.Instantiate(unidad, LevelManager.salaActiva.transform);
+        
     }
 
     void RecuperarUnidades()

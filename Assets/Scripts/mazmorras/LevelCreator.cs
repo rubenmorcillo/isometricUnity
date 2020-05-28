@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
-public static class LevelCreator
+public static class LevelManager
 {
     enum orientacionEnum { Arriba, Abajo, Derecha, Izquierda};
 

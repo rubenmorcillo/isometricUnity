@@ -9,6 +9,7 @@ public class GenericUnit : MonoBehaviour
     private int _hpMax;
     private int _hpActual;
     private bool _estoyVivo;
+    private GameObject _modelPrefab;
     
     public GenericUnit()
     {
@@ -80,6 +81,18 @@ public class GenericUnit : MonoBehaviour
         set
         {
             _estoyVivo = value;
+        }
+    }
+
+    public GameObject modelPrefab
+    {
+        get
+        {
+            return _modelPrefab;
+        }
+        set
+        {
+            _modelPrefab = value;
         }
     }
 

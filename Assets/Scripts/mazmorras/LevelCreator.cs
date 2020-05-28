@@ -17,7 +17,7 @@ public static class LevelCreator
 
     static List<GameObject> salasMazmorra = new List<GameObject>();
 
-    static GameObject salaActiva;
+    public static GameObject salaActiva;
 
     static NavMeshSurface navegacion;
 
@@ -28,13 +28,20 @@ public static class LevelCreator
         Debug.Log("LC: me inicio");
         //gameObject = Object.Instantiate(new GameObject("Mapa"), new Vector3(0.5f, 0, 0), Quaternion.identity ); //CON ESTO ME LO CREA DOBLE (WTF???)
 
-        gameObject = new GameObject("Mapa");
-        gameObject.AddComponent<Transform>();
-        gameObject.transform.Translate(new Vector3(0.5f, 0, 0));
        
-        navegacion = gameObject.AddComponent<NavMeshSurface>();
-        player = (GameObject)Resources.Load("testPlayer");
+        player = (GameObject)Resources.Load("avatarPlayer");
         FiltrarPrefabs();
+    }
+
+    public static GameObject CrearMazmorra()
+    {
+        gameObject = new GameObject("Mazmorra");
+        //gameObject.AddComponent<Transform>();
+        gameObject.transform.Translate(new Vector3(0.5f, 0, 0));
+
+        navegacion = gameObject.AddComponent<NavMeshSurface>();
+
+        return gameObject;
     }
 
 
@@ -170,7 +177,7 @@ public static class LevelCreator
     }
    
     
-    public static void posicionarJugador()
+    public static GameObject posicionarJugador()
     {
         GameObject spawn; 
         spawn = GameObject.Find("playerSpawn");
@@ -178,7 +185,7 @@ public static class LevelCreator
         if (spawn != null)
         {
           
-            ///player.AddComponent<LogicaJugadorMouse>();
+            //player.AddComponent<LogicaJugadorMouse>();
             player = Object.Instantiate(player, gameObject.transform);
             player.transform.Translate(spawn.transform.position);
             EstadosJuego.setIniciado(true);
@@ -186,7 +193,9 @@ public static class LevelCreator
         else
         {
             Debug.Log("error instanciando jugador // no hay playerSpawn");
+            
         }
+        return player;
     }
 
 }

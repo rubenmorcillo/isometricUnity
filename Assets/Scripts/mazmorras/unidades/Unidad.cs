@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tutorialManager : MonoBehaviour
+public class Unidad : GenericUnit
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void cambiarLocalizacion()
-    {
+        if (this.hpActual <= 0)
+        {
+            //he morido
+            this.estoyVivo = false;
+        }
     }
 }

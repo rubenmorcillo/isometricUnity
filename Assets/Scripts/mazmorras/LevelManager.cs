@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
-
+    GameObject mazmorra;
     GameObject playerAvatar;
 
     private void Awake()
@@ -40,8 +40,9 @@ public class LevelManager : MonoBehaviour
 
     private void iniciarMazmorra()
     {
+        mazmorra = LevelCreator.CrearMazmorra();
         LevelCreator.CrearSalaInicial();
-        LevelCreator.posicionarJugador();
+        playerAvatar = LevelCreator.posicionarJugador();
         EstadosJuego.activarEstado(EstadosJuego.Estado.EXPLORAR);
     }
 
@@ -52,11 +53,27 @@ public class LevelManager : MonoBehaviour
 
     public void activarCombate()
     {
-        //desactivo a mi player
-        //instancio mi muñeco (cuales?)
+        EstadosJuego.activarEstado(EstadosJuego.Estado.COMBATE);
 
+        //desactivo a mi avatar
+        playerAvatar.SetActive(false);
+        //instancio mi muñeco (cuales?)
+        GameObject unidad = (GameObject)Resources.Load("UnidadSRC");
+        unidad = GameObject.Instantiate(unidad, LevelCreator.salaActiva.transform);
         //
     }
+
+    void RecuperarUnidades()
+    {
+
+    }
+
+    void CrearUnidades()
+    {
+
+    }
+
+
 
    
 }

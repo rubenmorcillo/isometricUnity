@@ -76,9 +76,7 @@ public class GameManager : MonoBehaviour
         combateManager.enabled = true;
         combateManager.Combate(LevelManager.salaActiva.GetComponent<Sala>());
         
-        //instancio mi muñeco (cuales?)
-        //GameObject unidad = (GameObject)Resources.Load("UnidadSRC");
-        //unidad = GameObject.Instantiate(unidad, LevelManager.salaActiva.transform);
+      
         
     }
    

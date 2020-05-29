@@ -37,19 +37,7 @@ public class Tile : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        if (combateManager.fase == CombateManager.FaseCombate.COLOCANDO)
-        {
-            if (target)
-            {
-                GetComponent<Renderer>().material.color = Color.green;
-            }
-            else if (spawnUnidad)
-            {
-                GetComponent<Renderer>().material.color = Color.blue;
-            }
-        }
-        else
-        {
+       
             if (current)
             {
                 GetComponent<Renderer>().material.color = Color.cyan;
@@ -66,7 +54,7 @@ public class Tile : MonoBehaviour
             {
                 GetComponent<Renderer>().material.color = Color.white;
             }
-        }
+        
        
 	}
 

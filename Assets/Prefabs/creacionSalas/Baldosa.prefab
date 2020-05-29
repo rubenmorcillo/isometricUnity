@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4113918932511910491}
   - component: {fileID: 4113918932511910488}
   - component: {fileID: 4113918932511910489}
-  m_Layer: 0
-  m_Name: Casilla (48)
+  m_Layer: 10
+  m_Name: Baldosa
   m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,6 +109,8 @@ MonoBehaviour:
   current: 0
   target: 0
   selectable: 0
+  spawnEnemigo: 0
+  spawnUnidad: 0
   adjacencyList: []
   visited: 0
   parent: {fileID: 0}

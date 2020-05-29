@@ -45,10 +45,14 @@ public class CombateManager : MonoBehaviour
 
     private void Update()
     {
+
         if(fase == FaseCombate.COLOCANDO)
         {
             mostrarIniciosDisponibles(LevelManager.salaActiva.GetComponent<Sala>());
             checkMouse();
+        }else if(fase == FaseCombate.COMBATE)
+        {
+
         }
 
     }
@@ -69,13 +73,12 @@ public class CombateManager : MonoBehaviour
             Debug.Log("creando " + numeroEnemigos + " enemigos ");
             foreach (GameObject enemigo in sala.dameEnemigos(numeroEnemigos))
             {
+
                 Tile disponible = posicionesDisponibles[0];
                 posicionesDisponibles.Remove(disponible);
-                Vector3 posicion = disponible.transform.position + new Vector3(0,0.9f,0);
-                Instantiate(enemigo, posicion, Quaternion.identity); //la rotación molaría calcularla...
-                Debug.Log(enemigo.name);
-                //enemigos.Add(enemigo.GetComponent<NPCMove>());
-                Debug.Log("voy a colocar " + enemigo + " en " + posicion);
+                colocarUnidad(enemigo, disponible);
+                Debug.Log(enemigo.GetComponent<NPCMove>());
+
             }
         }
         else
@@ -112,23 +115,16 @@ public class CombateManager : MonoBehaviour
                     c.target = true;
                     if (Input.GetMouseButton(0))
                     {
-                        Debug.Log("Colocando tu unidad en " + c);
-                        colocarUnidad(c);
+                        GameObject unidadProvisional = (GameObject)Resources.Load("Unidades/UnidadSRC"); //ESTO HAY QUE CAMBIARLO!!!
+                        colocarUnidad(unidadProvisional, c);
+                        Debug.Log("Colocando " +  unidadProvisional +" en " + c);
                     }
                 }
             }
         }
     }
-    void colocarUnidad(Tile casilla)
+    void colocarUnidad(GameObject modeloUnidad, Tile casilla)
     {
-        //qué unidad coloco?
-        //Unidad unidad = gameManager.DatosPlayer.coleccionUnidades[0];
-        GameObject unidad = new GameObject();
-        unidad.name = "UnidadSRC";
-       
-        GameObject modeloUnidad = (GameObject) Resources.Load("Unidades/"+unidad.name);
-        Destroy(unidad);
-        Instantiate(modeloUnidad, casilla.transform.position, Quaternion.identity);
-        fase = FaseCombate.COMBATE;
+        Instantiate(modeloUnidad, casilla.transform.position + new Vector3(0,0.9f,0), Quaternion.identity);
     }
 }

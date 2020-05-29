@@ -98,13 +98,36 @@ public class Sala : MonoBehaviour
         return enemigos;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
+    // Update is called once per frame
+    void Update()
+    {
+        if (CombateManager.instance.fase == CombateManager.FaseCombate.COLOCANDO)
+        {
+            encontrarCasillasDisponibles();
 
-   
+        }
+       
+    }
 
-   
+    void encontrarCasillasDisponibles()
+    {
+        foreach (Tile t in PuntosInicioPlayer())
+        {
+            Debug.DrawRay(t.transform.position, Vector3.up, Color.magenta);
+
+            int lm = ~(1 << 10); 
+            if (!Physics.Raycast(t.transform.position - new Vector3(0,0.5f,0), Vector3.up, 4.0f, lm)) //4 por asegurar
+            {
+                t.selectable = true;
+            }
+            else
+            {
+                t.selectable = false;
+            }
+        }
+    }
+
+
+
+
 }

@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour
     public bool current = false;
     public bool target = false;
     public bool selectable = false;
+    public bool spawnEnemigo = false;
+    public bool spawnUnidad = false;
 
     public List<Tile> adjacencyList = new List<Tile>();
 

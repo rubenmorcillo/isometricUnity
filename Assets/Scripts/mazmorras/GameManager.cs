@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     GameObject playerModel;
     DatosPlayer datosPlayer;
 
+    CombateManager combateManager;
+
     private void Awake()
     {
         if (instance == null)
@@ -20,15 +22,17 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
 
         datosPlayer = gameObject.GetComponent<DatosPlayer>();
+        combateManager = gameObject.GetComponent<CombateManager>();
     }
 
     //toDo: void CargarDatosPlayer(){}
 
     public void Start()
     {
-        Debug.Log("LevelManager: me inicio");
-       
+        Debug.Log("GameManager: start...");
+
         //inico los otros managers
+        combateManager.enabled = false;
         LevelManager.Init();
 
 
@@ -58,27 +62,15 @@ public class GameManager : MonoBehaviour
         EstadosJuego.activarEstado(EstadosJuego.Estado.COMBATE);
 
         playerModel.SetActive(false); //desactivo a mi avatar
-        //colocarEnemigos();
-
+        combateManager.enabled = true;
+        //de momento creamos un combate con 1 de los posibles enemigos de la sala
+        combateManager.Combate(LevelManager.salaActiva.GetComponent<Sala>());
 
 
         //instancio mi muñeco (cuales?)
-        GameObject unidad = (GameObject)Resources.Load("UnidadSRC");
-        unidad = GameObject.Instantiate(unidad, LevelManager.salaActiva.transform);
+        //GameObject unidad = (GameObject)Resources.Load("UnidadSRC");
+        //unidad = GameObject.Instantiate(unidad, LevelManager.salaActiva.transform);
         
     }
-
-    void RecuperarUnidades()
-    {
-
-    }
-
-    void CrearUnidades()
-    {
-
-    }
-
-
-
    
 }

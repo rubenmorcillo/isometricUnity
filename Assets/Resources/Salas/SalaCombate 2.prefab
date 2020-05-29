@@ -57,6 +57,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puntoUnion: {fileID: 5550772906216124306}
+  posiblesEnemigos:
+  - {fileID: 6107753898302182247, guid: 38cd1323093ec7d4888880d441f820db, type: 3}
+  puntosInicioEnemigos: []
   anchoInicio: 0
 --- !u!1 &3669522450419417927
 GameObject:
@@ -1967,6 +1970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113918932511910489, guid: 6fa002e1c72f19f4fa566fdfde26ff8f,
+        type: 3}
+      propertyPath: spawnEnemigo
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa002e1c72f19f4fa566fdfde26ff8f, type: 3}
@@ -4161,6 +4169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4113918932511910489, guid: 6fa002e1c72f19f4fa566fdfde26ff8f,
+        type: 3}
+      propertyPath: spawnEnemigo
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fa002e1c72f19f4fa566fdfde26ff8f, type: 3}

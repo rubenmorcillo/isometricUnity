@@ -54,4 +54,12 @@ public class DatosPlayer : MonoBehaviour
             _reputacion = value;
         }
     }
+
+    public Unidad[] coleccionUnidades
+    {
+        get
+        {
+            return _coleccionUnidades;
+        }
+    }
 }

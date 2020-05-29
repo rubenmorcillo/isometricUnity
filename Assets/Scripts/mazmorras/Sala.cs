@@ -13,8 +13,6 @@ public class Sala : MonoBehaviour
     [SerializeField]
     List<GameObject> posiblesEnemigos;
 
-    public List<Tile> puntosInicioEnemigos;
-
     public int anchoInicio;
     
     // Start is called before the first frame update
@@ -69,22 +67,24 @@ public class Sala : MonoBehaviour
                 lista.Add(t);
             }
         }
-        puntosInicioEnemigos = lista;
         return lista;
     }
 
-    public Transform PuntoInicioLibre()
+    public List<Tile> PuntosInicioPlayer()
     {
-        //para unidades
-
-        //para npcs
-        foreach (Tile t in PuntosInicioEnemigo())
+        List<Tile> lista = new List<Tile>();
+        foreach (Tile t in gameObject.GetComponentsInChildren<Tile>())
         {
-            
+            if (t.spawnUnidad)
+            {
+                lista.Add(t);
+            }
         }
-        return null;
+        return lista;
     }
-    
+
+
+
 
     public List<GameObject> dameEnemigos(int n)
     {

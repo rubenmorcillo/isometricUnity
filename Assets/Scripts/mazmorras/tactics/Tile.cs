@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Tile : MonoBehaviour 
 {
+
+
     public bool walkable = true;
     public bool current = false;
     public bool target = false;
@@ -24,6 +26,8 @@ public class Tile : MonoBehaviour
     public float g = 0;
     public float h = 0;
 
+    CombateManager combateManager = CombateManager.instance;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -33,22 +37,37 @@ public class Tile : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        if (current)
+        if (combateManager.fase == CombateManager.FaseCombate.COLOCANDO)
         {
-            GetComponent<Renderer>().material.color = Color.cyan;
-        }
-        else if (target)
-        {
-            GetComponent<Renderer>().material.color = Color.green;
-        }
-        else if (selectable)
-        {
-            GetComponent<Renderer>().material.color = Color.blue;
+            if (target)
+            {
+                GetComponent<Renderer>().material.color = Color.green;
+            }
+            else if (spawnUnidad)
+            {
+                GetComponent<Renderer>().material.color = Color.blue;
+            }
         }
         else
         {
-            GetComponent<Renderer>().material.color = Color.white;
+            if (current)
+            {
+                GetComponent<Renderer>().material.color = Color.cyan;
+            }
+            else if (target)
+            {
+                GetComponent<Renderer>().material.color = Color.green;
+            }
+            else if (selectable)
+            {
+                GetComponent<Renderer>().material.color = Color.blue;
+            }
+            else
+            {
+                GetComponent<Renderer>().material.color = Color.white;
+            }
         }
+       
 	}
 
     public void Reset()

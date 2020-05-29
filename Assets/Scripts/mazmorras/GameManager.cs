@@ -25,6 +25,15 @@ public class GameManager : MonoBehaviour
         combateManager = gameObject.GetComponent<CombateManager>();
     }
 
+    public DatosPlayer DatosPlayer
+    {
+        get
+        {
+            return datosPlayer;
+        }
+       
+    }
+
     //toDo: void CargarDatosPlayer(){}
 
     public void Start()
@@ -60,13 +69,13 @@ public class GameManager : MonoBehaviour
     public void activarCombate()
     {
         EstadosJuego.activarEstado(EstadosJuego.Estado.COMBATE);
-
+     
+        //ToDo:hago la animación que tenga que hacer
+        //pongo la musica
         playerModel.SetActive(false); //desactivo a mi avatar
         combateManager.enabled = true;
-        //de momento creamos un combate con 1 de los posibles enemigos de la sala
         combateManager.Combate(LevelManager.salaActiva.GetComponent<Sala>());
-
-
+        
         //instancio mi muñeco (cuales?)
         //GameObject unidad = (GameObject)Resources.Load("UnidadSRC");
         //unidad = GameObject.Instantiate(unidad, LevelManager.salaActiva.transform);

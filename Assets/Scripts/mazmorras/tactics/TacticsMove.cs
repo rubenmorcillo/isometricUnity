@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class TacticsMove : MonoBehaviour 
@@ -12,13 +13,14 @@ public class TacticsMove : MonoBehaviour
     Stack<Tile> path = new Stack<Tile>();
     Tile currentTile;
 
+    DatosUnidad datosUnidad;
+
     public bool moving = false;
-    public int move = 5;
+    //public int move = 5;
     public float jumpHeight = 2;
     public float moveSpeed = 2;
     public float jumpVelocity = 4.5f;
 
-    
 
     Vector3 velocity = new Vector3();
     Vector3 heading = new Vector3();
@@ -35,6 +37,11 @@ public class TacticsMove : MonoBehaviour
     public Tile actualTargetTile;
 
     protected Animator animator;
+
+    public void setDatos(DatosUnidad du)
+    {
+        datosUnidad = du;
+    }
 
     protected void Init()
     {
@@ -70,7 +77,6 @@ public class TacticsMove : MonoBehaviour
 
     public void ComputeAdjacencyLists(float jumpHeight, Tile target)
     {
-        //tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         foreach (GameObject tile in tiles)
         {
@@ -97,7 +103,7 @@ public class TacticsMove : MonoBehaviour
             selectableTiles.Add(t);
             t.selectable = true;
 
-            if (t.distance < move)
+            if (t.distance < datosUnidad.rangoMovimiento)
             {
                 foreach (Tile tile in t.adjacencyList)
                 {
@@ -134,7 +140,7 @@ public class TacticsMove : MonoBehaviour
             
             Tile t = path.Peek();
             Vector3 target = t.transform.position;
-            //Calculate the unit's position on top of the target tile
+            //Calcular la posición de la unidad encima de la casilla (Tile) objetivo
             target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
 
             if (Vector3.Distance(transform.position, target) >= minDistance/2)
@@ -151,13 +157,13 @@ public class TacticsMove : MonoBehaviour
                     SetHorizotalVelocity();
                 }
 
-                //Locomotion
+                //Movimiento
                 transform.forward = heading;
                 transform.position += velocity * Time.deltaTime;
             }
             else
             {
-                //Tile center reached
+                //Hemos llegado al centro
                 transform.position = target;
                 path.Pop();
             }
@@ -320,13 +326,13 @@ public class TacticsMove : MonoBehaviour
             next = next.parent;
         }
 
-        if (tempPath.Count <= move)
+        if (tempPath.Count <= datosUnidad.rangoMovimiento)
         {
             return t.parent;
         }
 
         Tile endTile = null;
-        for (int i = 0; i <= move; i++)
+        for (int i = 0; i <= datosUnidad.rangoMovimiento; i++)
         {
             endTile = tempPath.Pop();
         }
@@ -392,7 +398,7 @@ public class TacticsMove : MonoBehaviour
         }
 
         //no hay camino disponible...
-        Debug.Log("Path not found");
+        Debug.Log("No hay camino posible");
     }
 
     public void BeginTurn()

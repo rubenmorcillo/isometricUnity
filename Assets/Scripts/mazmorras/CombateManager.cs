@@ -22,11 +22,13 @@ public class CombateManager : MonoBehaviour
 
     }
 
-    GameManager gameManager = GameManager.instance;
-    List<NPCMove> enemigos;
-    List<PlayerMove> unidades;
+    GameManager gameManager;
+    //List<NPCMove> enemigos;
+    //List<PlayerMove> unidades;
 
-    GameObject unidadPrueba;
+    [SerializeField]
+    GameObject unidadSeleccionada;
+    bool playerReady;
     
     public enum FaseCombate {INICIO, COLOCANDO, COMBATE}
     public FaseCombate fase;
@@ -34,6 +36,7 @@ public class CombateManager : MonoBehaviour
     bool ready;
     void Start()
     {
+        gameManager = GameManager.instance;
         Debug.Log("CM: start....");
     }
     public void Combate(Sala sala)
@@ -49,7 +52,12 @@ public class CombateManager : MonoBehaviour
         if(fase == FaseCombate.COLOCANDO)
         {
             mostrarIniciosDisponibles(LevelManager.salaActiva.GetComponent<Sala>());
+            mostrarUnidadesDisponibles();
             checkMouse();
+            if (playerReady)
+            {
+                fase = FaseCombate.COMBATE;
+            }
         }else if(fase == FaseCombate.COMBATE)
         {
 
@@ -76,7 +84,7 @@ public class CombateManager : MonoBehaviour
 
                 Tile disponible = posicionesDisponibles[0];
                 posicionesDisponibles.Remove(disponible);
-                colocarUnidad(enemigo, disponible);
+                crearUnidad(enemigo, disponible);
                 Debug.Log(enemigo.GetComponent<NPCMove>());
 
             }
@@ -99,32 +107,63 @@ public class CombateManager : MonoBehaviour
 
     }
 
+    private void mostrarUnidadesDisponibles()
+    {
+        //Debug.Log("tengo ->" + gameManager.DatosPlayer.equipoUnidades.Count + "unidades");
+        foreach(DatosUnidad du in gameManager.DatosPlayer.equipoUnidades)
+        {
+            Debug.Log(du.unitName);
+        }
+    }
+
     private void checkMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.collider.tag == "Tile")
-            {
-                Tile c = hit.collider.GetComponent<Tile>();
 
-                if (c.selectable)
+        //LayerMask layerMaskUI = LayerMask.GetMask("UI");
+        if (unidadSeleccionada == null)
+        {
+            //seleccionar unidad para colocar  => unidadSeleccionada
+            
+
+            GameObject modelo = (GameObject)Resources.Load("Unidades/" + gameManager.DatosPlayer.equipoUnidades[0].modelPrefabName);
+            unidadSeleccionada = modelo;
+        }
+        else
+        {
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.tag == "Tile")
                 {
-                    c.target = true;
-                    if (Input.GetMouseButton(0))
+                    Tile c = hit.collider.GetComponent<Tile>();
+
+                    if (c.selectable)
                     {
-                        GameObject unidadProvisional = (GameObject)Resources.Load("Unidades/UnidadSRC"); //ESTO HAY QUE CAMBIARLO!!!
-                        colocarUnidad(unidadProvisional, c);
-                        Debug.Log("Colocando " +  unidadProvisional +" en " + c);
+                        c.target = true;
+                        if (Input.GetMouseButton(0))
+                        {
+                           //cargar la unidad seleccionada
+
+                            //TEMPORAAAAAAAAAAL
+                            
+                            
+                            GameObject nuevaUnidad = crearUnidad(unidadSeleccionada, c);
+                            nuevaUnidad.GetComponent<PlayerMove>().setDatos(gameManager.DatosPlayer.equipoUnidades[0]);
+                            Debug.Log("Colocando " + unidadSeleccionada + " en " + c);
+                            unidadSeleccionada = null;
+                        }
                     }
                 }
             }
         }
+
+       
+        
     }
-    void colocarUnidad(GameObject modeloUnidad, Tile casilla)
+    public GameObject crearUnidad(GameObject modeloUnidad, Tile casilla)
     {
-        Instantiate(modeloUnidad, casilla.transform.position + new Vector3(0,0.9f,0), Quaternion.identity);
+       return  Instantiate(modeloUnidad, casilla.transform.position + new Vector3(0,0.9f,0), Quaternion.identity);
     }
+    
 }

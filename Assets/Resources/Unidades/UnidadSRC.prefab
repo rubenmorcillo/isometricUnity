@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2695606857811973686}
   - component: {fileID: 2695606857811973682}
   m_Layer: 0
-  m_Name: Player 1
+  m_Name: UnidadSRC
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e2d8aa5fee15d164c9d478a58a195fa6, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

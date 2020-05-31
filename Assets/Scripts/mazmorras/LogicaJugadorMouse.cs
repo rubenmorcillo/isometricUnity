@@ -15,10 +15,8 @@ public class LogicaJugadorMouse : MonoBehaviour
     void Start()
     {
         GameObject objeto =  GameObject.Find("Texto");
-        Debug.Log(objeto);
 
         tmp = objeto.GetComponent<TextMeshProUGUI>();
-        Debug.Log(tmp);
         cam = Camera.main;
         
         gameManager = GameManager.instance;
@@ -36,10 +34,10 @@ public class LogicaJugadorMouse : MonoBehaviour
 
     void Update()
     {
-
+        CheckMousse();
         if (EstadosJuego.EstadoActual() == EstadosJuego.Estado.EXPLORAR)
         {
-            CheckMousse();
+          
             CheckPuerta();
             CheckSala();
         }
@@ -50,21 +48,53 @@ public class LogicaJugadorMouse : MonoBehaviour
 
     void CheckMousse()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(EstadosJuego.EstadoActual() == EstadosJuego.Estado.EXPLORAR)
         {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (Input.GetMouseButtonDown(0))
             {
-                if (!hit.collider.CompareTag("Muro"))
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
                 {
-                    motor.MoverAlPunto(hit.point);
+                    if (!hit.collider.CompareTag("Muro"))
+                    {
+                        motor.MoverAlPunto(hit.point);
+                    }
+
                 }
 
             }
-
         }
+        else if (EstadosJuego.EstadoActual() == EstadosJuego.Estado.COMBATE)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.collider.tag == "Tile")
+                {
+                    Tile c = hit.collider.GetComponent<Tile>();
+
+                    if (c.selectable)
+                    {
+                        c.target = true;
+                        if (Input.GetMouseButton(0))
+                        {
+                            //activarunidad para colocarla
+                            GameObject unidadProvisional = (GameObject)Resources.Load("Unidades/UnidadSRC"); //ESTO HAY QUE CAMBIARLO!!!
+                           
+                            CombateManager.instance.crearUnidad(unidadProvisional, c);
+                            Debug.Log("Colocando " + unidadProvisional + " en " + c);
+                        }
+                    }
+                }
+            }
+        }
+
+
+
     }
 
 

@@ -76,8 +76,6 @@ public class GameManager : MonoBehaviour
         combateManager.enabled = true;
         combateManager.Combate(LevelManager.salaActiva.GetComponent<Sala>());
         
-      
-        
     }
    
 }

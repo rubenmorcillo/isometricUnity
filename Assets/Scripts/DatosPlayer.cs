@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class DatosPlayer : MonoBehaviour
@@ -13,13 +14,35 @@ public class DatosPlayer : MonoBehaviour
     private int _dinero;
     [SerializeField]
     private int _reputacion;
+    //[SerializeField]
+    //private DatosUnidad[] _coleccionUnidades;
     [SerializeField]
-    private Unidad[] _coleccionUnidades;
+    List<DatosUnidad> _equipoUnidades = new List<DatosUnidad>();
+
 
     //tb debería tener un modelo
     private GameObject _avatarModelPrefab;
+
     
-   public string nickname
+    private void Start()
+    {
+        //debería recuperar los datos desde servidor
+        int id;
+        //soy el jugador con ID ? (1)
+        //llamar a getEquipoUnidadesPlayer(id)
+
+
+
+        //FALSEANDO MI EQUIPO
+        DatosUnidad du = new DatosUnidad(1, "rasek", 100);
+        DatosUnidad du2 = new DatosUnidad(2, "rusuk", 100);
+        
+        du.modelPrefabName = du.unitName;
+       
+        _equipoUnidades.Add(du);
+        _equipoUnidades.Add(du2);
+    }
+    public string nickname
     {
         get
         {
@@ -55,11 +78,36 @@ public class DatosPlayer : MonoBehaviour
         }
     }
 
-    public Unidad[] coleccionUnidades
+    //public Unidad[] coleccionUnidades
+    //{
+    //    get
+    //    {
+    //        return _coleccionUnidades;
+    //    }
+    //    set
+    //    {
+    //        _coleccionUnidades = value;
+    //    }
+    //}
+
+    public List<DatosUnidad> equipoUnidades
     {
         get
         {
-            return _coleccionUnidades;
+            return _equipoUnidades;
         }
+        set{
+            _equipoUnidades = value;
+        }
+    }
+
+    private void addUnidadEquipo(DatosUnidad unidad)
+    {
+        _equipoUnidades.Add(unidad);
+    }
+
+    private void removeUnidadEquipo(DatosUnidad unidad)
+    {
+        _equipoUnidades.Remove(unidad);
     }
 }

@@ -10,6 +10,7 @@ public class GenericUnit : MonoBehaviour
     private int _hpActual;
     private bool _estoyVivo;
     private GameObject _modelPrefab;
+    private string _modelPrefabName;
     
     public GenericUnit()
     {
@@ -93,6 +94,18 @@ public class GenericUnit : MonoBehaviour
         set
         {
             _modelPrefab = value;
+        }
+    }
+
+    public string modelPrefabName
+    {
+        get
+        {
+            return _modelPrefabName;
+        }
+        set
+        {
+            _modelPrefabName = value;
         }
     }
 

@@ -1,17 +1,26 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 
 public class LogicaJugadorMouse : MonoBehaviour
 {
-public LayerMask mascMov;
+    //public LayerMask mascMov;
 
+
+    TextMeshProUGUI tmp;
     Camera cam;
-	public GameObject camPos;
+	//public GameObject camPos;
     MotorJugador motor;
     GameManager gameManager;
     void Start()
     {
+        GameObject objeto =  GameObject.Find("Texto");
+        Debug.Log(objeto);
+
+        tmp = objeto.GetComponent<TextMeshProUGUI>();
+        Debug.Log(tmp);
         cam = Camera.main;
+        
         gameManager = GameManager.instance;
         if (motor == null)
         {
@@ -66,6 +75,7 @@ public LayerMask mascMov;
         {
             if (hit.collider.tag == "Puerta")
             {
+                tmp.SetText("pulsa espacio para abrir");
                 //Debug.Log("pulsa espacio para continuar");
                 if (Input.GetKey(KeyCode.Space))
                 {
@@ -75,6 +85,10 @@ public LayerMask mascMov;
                     gameManager.abrirPuerta(puerta);
                     
                 }
+            }
+            else
+            {
+                tmp.SetText("");
             }
         }
     }

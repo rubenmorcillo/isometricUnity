@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mascMov:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   camPos: {fileID: 0}
 --- !u!1 &2631726817811100127
 GameObject:
@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2631726817811100124}
   m_Layer: 0
-  m_Name: testPlayer
+  m_Name: avatarPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

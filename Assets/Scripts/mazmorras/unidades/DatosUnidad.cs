@@ -34,6 +34,7 @@ public class DatosUnidad
     public string modelPrefabName { get; set; }
 
     public int rangoMovimiento { get; set; }
+    public bool isPlaced { get; set; }
    
 
     

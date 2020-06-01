@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Boo.Lang.Runtime.DynamicDispatching;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,7 +113,10 @@ public class CombateManager : MonoBehaviour
         //Debug.Log("tengo ->" + gameManager.DatosPlayer.equipoUnidades.Count + "unidades");
         foreach(DatosUnidad du in gameManager.DatosPlayer.equipoUnidades)
         {
-            Debug.Log(du.unitName);
+            if (!du.isPlaced)
+            {
+                Debug.Log(du.unitName);
+            }
         }
     }
 
@@ -125,9 +129,8 @@ public class CombateManager : MonoBehaviour
         if (unidadSeleccionada == null)
         {
             //seleccionar unidad para colocar  => unidadSeleccionada
-            
-
-            GameObject modelo = (GameObject)Resources.Load("Unidades/" + gameManager.DatosPlayer.equipoUnidades[0].modelPrefabName);
+            IEnumerable<DatosUnidad> unidadesDisponibles =  gameManager.DatosPlayer.equipoUnidades.Where<DatosUnidad>(datos => !datos.isPlaced);
+            GameObject modelo = (GameObject)Resources.Load("Unidades/" + unidadesDisponibles.First().modelPrefabName);
             unidadSeleccionada = modelo;
         }
         else
@@ -145,12 +148,12 @@ public class CombateManager : MonoBehaviour
                         {
                            //cargar la unidad seleccionada
 
-                            //TEMPORAAAAAAAAAAL
-                            
                             
                             GameObject nuevaUnidad = crearUnidad(unidadSeleccionada, c);
-                            nuevaUnidad.GetComponent<PlayerMove>().setDatos(gameManager.DatosPlayer.equipoUnidades[0]);
+                           
+                            nuevaUnidad.GetComponent<PlayerMove>().setDatos(gameManager.DatosPlayer.equipoUnidades[0]); //TEMPORAL
                             Debug.Log("Colocando " + unidadSeleccionada + " en " + c);
+                            gameManager.DatosPlayer.equipoUnidades[0].isPlaced = true;
                             unidadSeleccionada = null;
                         }
                     }

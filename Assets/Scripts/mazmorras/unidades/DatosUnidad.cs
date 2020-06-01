@@ -6,19 +6,19 @@ using UnityEngine;
 public class DatosUnidad
 {
 
-    private int _hpMax;
 
     public DatosUnidad()
     {
 
     }
-    public DatosUnidad(int id, string name, int hp)
+    public DatosUnidad(int id, string name,int rangoMovimiento, int hp)
     {
         this.id = id;
         unitName = name;
         estoyVivo = true;
         hpMax = hp;
-        hpActual = _hpMax;
+        hpActual = hpMax;
+        this.rangoMovimiento = rangoMovimiento;
     }
 
     public int id { get; set; }

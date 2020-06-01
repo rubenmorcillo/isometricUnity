@@ -133,6 +133,7 @@ public class LogicaJugadorMouse : MonoBehaviour
                 Debug.Log("combate");
                 motor.MoverAlPunto(transform.position); //con esto lo dejamos quieto cuando se active el evento
                 gameManager.activarCombate();
+                hit.collider.enabled = false;
             }
         }
     }

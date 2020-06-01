@@ -138,10 +138,20 @@ public static class LevelManager
         }
     }
 
-    static void DesactivarPuerta(Puerta puerta)
+    public static void DesactivarPuerta(Puerta puerta)
     {
         puerta.GetComponentInChildren<BoxCollider>().enabled = false ;
     }
+    public static void ActivarPuerta(Puerta puerta)
+    {
+        puerta.GetComponentInChildren<BoxCollider>().enabled = true;
+    }
+
+    //public static void DesactivarEvento(GameObject evento)
+    //{
+    //    Object.Destroy(evento);
+    //}
+
 
     static void CrearPrefab(GameObject prefab, Puerta puerta)
     {

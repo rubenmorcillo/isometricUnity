@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: -1787337924656714025}
   m_Layer: 0
   m_Name: rasek
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -472,12 +472,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turn: 0
   moving: 0
-  move: 5
   jumpHeight: 2
   moveSpeed: 2
   jumpVelocity: 4.5
-  _hpMax: 0
-  _unitName: 0
   actualTargetTile: {fileID: 0}
 --- !u!136 &-1787337924656714025
 CapsuleCollider:

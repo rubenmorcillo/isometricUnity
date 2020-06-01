@@ -67,11 +67,11 @@ public class TacticsMove : MonoBehaviour
         RaycastHit hit;
         Tile tile = null;
 
-        if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))
+        if (Physics.Raycast(target.transform.position, -Vector3.up, out hit, 2))
         {
             tile = hit.collider.GetComponent<Tile>();
         }
-
+       
         return tile;
     }
 

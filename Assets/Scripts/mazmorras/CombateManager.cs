@@ -4,10 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class CombateManager : MonoBehaviour
 {
-
+    public TextMeshProUGUI tmp; //esto hay que quitarlo
     public static CombateManager instance;
 
     private void Awake()
@@ -29,11 +30,11 @@ public class CombateManager : MonoBehaviour
 
     [SerializeField]
     GameObject unidadSeleccionada;
-    bool playerReady;
+   
     
-    public enum FaseCombate {INICIO, COLOCANDO, COMBATE}
+    public enum FaseCombate {INICIO, COLOCANDO, INICIO_COMBATE, COMBATE, FIN_COMBATE}
     public FaseCombate fase;
-
+    bool playerReady;
     bool ready;
     void Start()
     {
@@ -55,13 +56,33 @@ public class CombateManager : MonoBehaviour
             mostrarIniciosDisponibles(LevelManager.salaActiva.GetComponent<Sala>());
             mostrarUnidadesDisponibles();
             checkMouse();
+         
+            if ((gameManager.DatosPlayer.equipoUnidades.Where(unidad => unidad.isPlaced).Count()) > 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Debug.Log("iniciando combate");
+                    playerReady = true;
+                }
+               
+            }
+            else
+            {
+                playerReady = false;
+            }
             if (playerReady)
             {
-                fase = FaseCombate.COMBATE;
+                fase = FaseCombate.INICIO_COMBATE;
             }
-        }else if(fase == FaseCombate.COMBATE)
+        }else if(fase == FaseCombate.INICIO_COMBATE)
         {
-
+            //desactivamos puerta porque el collider nos jode las casillas
+            LevelManager.DesactivarPuerta(LevelManager.salaActiva.GetComponentInChildren<Puerta>());
+            gameObject.AddComponent<TurnManager>();
+            fase = FaseCombate.COMBATE;
+        }else if (fase == FaseCombate.FIN_COMBATE)
+        {
+           
         }
 
     }
@@ -85,7 +106,8 @@ public class CombateManager : MonoBehaviour
 
                 Tile disponible = posicionesDisponibles[0];
                 posicionesDisponibles.Remove(disponible);
-                crearUnidad(enemigo, disponible);
+                GameObject nuevoEnemigo  = crearUnidad(enemigo, disponible);
+                nuevoEnemigo.GetComponent<NPCMove>().setDatos(new DatosUnidad(0, "enemigo1", 5,20));
                 Debug.Log(enemigo.GetComponent<NPCMove>());
 
             }
@@ -115,11 +137,14 @@ public class CombateManager : MonoBehaviour
         {
             if (!du.isPlaced)
             {
-                Debug.Log(du.unitName);
+               // Debug.Log(du.unitName);
             }
         }
     }
 
+
+
+    //ESTA FUNCION DEBERÍA ESTAR EN EL CHEQUEADOR DE MOUSE
     private void checkMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

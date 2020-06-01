@@ -34,8 +34,8 @@ public class DatosPlayer : MonoBehaviour
 
 
         //FALSEANDO MI EQUIPO
-        DatosUnidad du = new DatosUnidad(1, "rasek", 100);
-        DatosUnidad du2 = new DatosUnidad(2, "rusuk", 100);
+        DatosUnidad du = new DatosUnidad(1, "rasek",5, 100);
+        DatosUnidad du2 = new DatosUnidad(2, "rusuk",5, 100);
         
         du.modelPrefabName = du.unitName;
        

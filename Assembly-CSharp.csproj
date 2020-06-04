@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\mazmorras\MotorJugador.cs" />
     <Compile Include="Assets\Scripts\mazmorras\Puerta.cs" />
     <Compile Include="Assets\Scripts\mazmorras\Sala.cs" />
+    <Compile Include="Assets\Scripts\mazmorras\ServerManager.cs" />
     <Compile Include="Assets\Scripts\mazmorras\tactics\NPCMove.cs" />
     <Compile Include="Assets\Scripts\mazmorras\tactics\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\mazmorras\tactics\TacticsMove.cs" />

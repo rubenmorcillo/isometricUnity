@@ -34,6 +34,7 @@ public class ServerManager : MonoBehaviour
 
     IEnumerator GetRequest(string uri)
     {
+        Debug.Log("SM: llamando a " + uri);
         using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
         {
             // Request and wait for the desired page.
@@ -44,11 +45,13 @@ public class ServerManager : MonoBehaviour
 
             if (webRequest.isNetworkError)
             {
-                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+                
+                Debug.Log("SM: " + pages[page] + ": Error: " + webRequest.error);
+                GetRequest(uri);
             }
             else
             {
-                Debug.Log(pages[page] + ": Exito: " + webRequest.downloadHandler.text);
+                Debug.Log("SM: " + pages[page] + ": Exito: " + webRequest.downloadHandler.text);
             }
         }
     }

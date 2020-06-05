@@ -23,7 +23,26 @@ public class DatosPlayer : MonoBehaviour
     //tb debería tener un modelo
     private GameObject _avatarModelPrefab;
 
-    
+
+    private void Init()
+    {
+        //debería recuperar los datos desde servidor
+        int id;
+        //soy el jugador con ID ? (1)
+        //llamar a getEquipoUnidadesPlayer(id)
+
+
+
+        //FALSEANDO MI EQUIPO
+        DatosUnidad du = new DatosUnidad(1, "rasek", 5, 100);
+        DatosUnidad du2 = new DatosUnidad(2, "rusuk", 5, 100);
+
+        du.modelPrefabName = du.unitName;
+
+        _equipoUnidades.Add(du);
+        _equipoUnidades.Add(du2);
+    }
+
     private void Start()
     {
         //debería recuperar los datos desde servidor
@@ -34,11 +53,11 @@ public class DatosPlayer : MonoBehaviour
 
 
         //FALSEANDO MI EQUIPO
-        DatosUnidad du = new DatosUnidad(1, "rasek",5, 100);
-        DatosUnidad du2 = new DatosUnidad(2, "rusuk",5, 100);
-        
+        DatosUnidad du = new DatosUnidad(1, "rasek", 5, 100);
+        DatosUnidad du2 = new DatosUnidad(2, "rusuk", 5, 100);
+
         du.modelPrefabName = du.unitName;
-       
+
         _equipoUnidades.Add(du);
         _equipoUnidades.Add(du2);
     }

@@ -45,12 +45,8 @@ public class GameManager : MonoBehaviour
         LevelManager.Init();
 
 
-
-
-
         //de momento...
         iniciarMazmorra();
-        
     }
 
     private void iniciarMazmorra()

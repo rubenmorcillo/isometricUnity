@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class DatosUnidad
 {
 
@@ -32,6 +33,12 @@ public class DatosUnidad
     public bool estoyVivo { get; set; }
 
     public string modelPrefabName { get; set; }
+
+    public int iniciativa { get; set; }
+
+    public int defensaCerca { get; set; }
+
+    public int defensaLejos { get; set; }
 
     public int rangoMovimiento { get; set; }
     public bool isPlaced { get; set; }

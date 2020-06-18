@@ -32,7 +32,6 @@ public class DatosPlayer : MonoBehaviour
         //llamar a getEquipoUnidadesPlayer(id)
 
 
-
         //FALSEANDO MI EQUIPO
         DatosUnidad du = new DatosUnidad(1, "rasek", 5, 100);
         DatosUnidad du2 = new DatosUnidad(2, "rusuk", 5, 100);
@@ -49,7 +48,6 @@ public class DatosPlayer : MonoBehaviour
         int id;
         //soy el jugador con ID ? (1)
         //llamar a getEquipoUnidadesPlayer(id)
-
 
 
         //FALSEANDO MI EQUIPO

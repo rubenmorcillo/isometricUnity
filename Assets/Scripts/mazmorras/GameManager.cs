@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
 
         datosPlayer = gameObject.GetComponent<DatosPlayer>();
         combateManager = gameObject.GetComponent<CombateManager>();
+
+        if (combateManager == null)
+        {
+            combateManager = gameObject.AddComponent<CombateManager>();
+        }
     }
 
     public DatosPlayer DatosPlayer
@@ -30,6 +35,10 @@ public class GameManager : MonoBehaviour
         get
         {
             return datosPlayer;
+        }
+        set
+        {
+            datosPlayer = value;
         }
        
     }
@@ -42,15 +51,18 @@ public class GameManager : MonoBehaviour
 
         //inico los otros managers
         combateManager.enabled = false;
+
+
+        //EL LEVEL MANAGER SOLO LO NECESITO CUANDO VOY A LA MAZMORRA
         LevelManager.Init();
 
-
         //de momento...
-        iniciarMazmorra();
+        //iniciarMazmorra();
     }
 
-    private void iniciarMazmorra()
+    public void iniciarMazmorra()
     {
+        Debug.Log("GM: iniciando mazmorra");
         mazmorra = LevelManager.CrearMazmorra();
         LevelManager.CrearSalaInicial();
         playerModel = LevelManager.posicionarJugador();

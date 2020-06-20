@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class DatosPlayer : MonoBehaviour
 {
-    //cuenta
-    [SerializeField]
-    private string _nickname;
 
-    //juego
-    [SerializeField]
-    private int _dinero;
-    [SerializeField]
-    private int _reputacion;
+    public string nickname { get; set; }
+    public int dinero { get; set; }
+    public int reputacion { get; set; }
+
+
     //[SerializeField]
     //private DatosUnidad[] _coleccionUnidades;
     [SerializeField]
@@ -24,76 +21,13 @@ public class DatosPlayer : MonoBehaviour
     private GameObject _avatarModelPrefab;
 
 
-    private void Init()
-    {
-        //debería recuperar los datos desde servidor
-        int id;
-        //soy el jugador con ID ? (1)
-        //llamar a getEquipoUnidadesPlayer(id)
+    //private void Start()
+    //{
+    //    int id;
 
-
-        //FALSEANDO MI EQUIPO
-        DatosUnidad du = new DatosUnidad(1, "rasek", 5, 100);
-        DatosUnidad du2 = new DatosUnidad(2, "rusuk", 5, 100);
-
-        du.modelPrefabName = du.unitName;
-
-        _equipoUnidades.Add(du);
-        _equipoUnidades.Add(du2);
-    }
-
-    private void Start()
-    {
-        //debería recuperar los datos desde servidor
-        int id;
-        //soy el jugador con ID ? (1)
-        //llamar a getEquipoUnidadesPlayer(id)
-
-
-        //FALSEANDO MI EQUIPO
-        DatosUnidad du = new DatosUnidad(1, "rasek", 5, 100);
-        DatosUnidad du2 = new DatosUnidad(2, "rusuk", 5, 100);
-
-        du.modelPrefabName = du.unitName;
-
-        _equipoUnidades.Add(du);
-        _equipoUnidades.Add(du2);
-    }
-    public string nickname
-    {
-        get
-        {
-            return _nickname;
-        }
-        set
-        {
-            _nickname = value;
-        }
-    }
-
-    public int dinero
-    {
-        get
-        {
-            return _dinero;
-        }
-        set
-        {
-            _dinero = value;
-        }
-    }
-
-    public int reputacion
-    {
-        get
-        {
-            return _reputacion;
-        }
-        set
-        {
-            _reputacion = value;
-        }
-    }
+    //}
+  
+   
 
     //public Unidad[] coleccionUnidades
     //{
@@ -118,12 +52,12 @@ public class DatosPlayer : MonoBehaviour
         }
     }
 
-    private void addUnidadEquipo(DatosUnidad unidad)
+    public void addUnidadEquipo(DatosUnidad unidad)
     {
         _equipoUnidades.Add(unidad);
     }
 
-    private void removeUnidadEquipo(DatosUnidad unidad)
+    public void removeUnidadEquipo(DatosUnidad unidad)
     {
         _equipoUnidades.Remove(unidad);
     }

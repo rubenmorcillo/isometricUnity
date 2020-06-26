@@ -34,13 +34,15 @@ public class CameraController : MonoBehaviour
     void HandleMovementInput()
     {
 
+        if (target == null)
+        {
+            return;
+        }
 
         if (newPosition == null)
         {
             newPosition = transform.position;
         }
-
-       
 
         if (Input.mousePosition.y > Screen.height - margen)
         {

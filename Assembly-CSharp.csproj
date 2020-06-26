@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\LevelBuilding\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\DatosPlayer.cs" />
+    <Compile Include="Assets\Scripts\Login.cs" />
     <Compile Include="Assets\Scripts\mazmorras\CameraController.cs" />
     <Compile Include="Assets\Scripts\mazmorras\CombateManager.cs" />
     <Compile Include="Assets\Scripts\mazmorras\EstadosJuego.cs" />

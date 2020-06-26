@@ -35,7 +35,9 @@ public static class LevelManager
 
     public static GameObject CrearMazmorra()
     {
-        gameObject = new GameObject("Mazmorra"); 
+        Debug.Log("LM: Creando mazmorra...");
+        gameObject = new GameObject("Mazmorra");
+        Object.DontDestroyOnLoad(gameObject);
         gameObject.transform.Translate(new Vector3(0.5f, 0, 0));
 
         navegacion = gameObject.AddComponent<NavMeshSurface>();

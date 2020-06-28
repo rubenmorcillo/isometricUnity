@@ -51,9 +51,9 @@ public class Login : MonoBehaviour
 
 
             //cuando esté todo cargado, lo llevo a la siguiente escena
-            SceneManager.LoadScene("mazmorra_01");
+            SceneManager.LoadScene("base");
 
-            GameManager.instance.iniciarMazmorra();
+            //GameManager.instance.iniciarMazmorra();
           
         }
     }

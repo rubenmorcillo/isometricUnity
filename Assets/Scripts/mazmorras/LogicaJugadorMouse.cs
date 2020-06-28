@@ -35,12 +35,18 @@ public class LogicaJugadorMouse : MonoBehaviour
     void Update()
     {
         CheckMousse();
+        CheckTeclado();
         if (EstadosJuego.EstadoActual() == EstadosJuego.Estado.EXPLORAR)
         {
           
             CheckPuerta();
             CheckSala();
         }
+       
+    }
+
+    void CheckTeclado()
+	{
        
     }
 

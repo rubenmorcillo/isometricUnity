@@ -24,10 +24,16 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        
         if (EstadosJuego.Iniciado())
         {
-            HandleMovementInput();
+            if (EstadosJuego.EstadoActual() != EstadosJuego.Estado.MENU)
+			{
+                HandleMovementInput();
+            }
+              
         }
+        
 
     }
 

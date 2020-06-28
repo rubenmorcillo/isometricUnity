@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(TecladoController))]
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     GameObject mazmorra;
     GameObject playerModel;
     DatosPlayer datosPlayer;
+
+    TecladoController teclado;
 
     CombateManager combateManager;
 
@@ -23,11 +26,15 @@ public class GameManager : MonoBehaviour
 
         datosPlayer = gameObject.GetComponent<DatosPlayer>();
         combateManager = gameObject.GetComponent<CombateManager>();
-
+        teclado = gameObject.GetComponent<TecladoController>();
         if (combateManager == null)
         {
             combateManager = gameObject.AddComponent<CombateManager>();
         }
+        if (teclado == null)
+		{
+            teclado = gameObject.AddComponent<TecladoController>();
+		}
     }
 
     public DatosPlayer DatosPlayer
@@ -49,6 +56,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameManager: start...");
 
+        teclado = GetComponent<TecladoController>();
+
         //inico los otros managers
         combateManager.enabled = false;
 
@@ -56,8 +65,6 @@ public class GameManager : MonoBehaviour
         //EL LEVEL MANAGER SOLO LO NECESITO CUANDO VOY A LA MAZMORRA
         LevelManager.Init();
 
-        //de momento...
-        //iniciarMazmorra();
     }
 
     public void iniciarMazmorra()

@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
         //EL LEVEL MANAGER SOLO LO NECESITO CUANDO VOY A LA MAZMORRA
         LevelManager.Init();
 
+        //iniciarMazmorra();
+
     }
 
     public void iniciarMazmorra()

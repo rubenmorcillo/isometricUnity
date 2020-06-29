@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
 
     public Vector2 panLimit = new Vector2(10,10);
-    GameObject target;
+    public GameObject target;
 
     public void SetTarget(GameObject target)
     {

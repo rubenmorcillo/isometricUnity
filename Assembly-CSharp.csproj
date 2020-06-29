@@ -66,7 +66,9 @@
     <Compile Include="Assets\LevelBuilding\AssetStoreOriginals\_SNAPS_PrototypingAssets\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\DatosPlayer.cs" />
     <Compile Include="Assets\Scripts\EstadosJuego.cs" />
+    <Compile Include="Assets\Scripts\Localizaciones.cs" />
     <Compile Include="Assets\Scripts\Login.cs" />
+    <Compile Include="Assets\Scripts\Managers y controladores\BaseMouseController.cs" />
     <Compile Include="Assets\Scripts\Managers y controladores\CameraController.cs" />
     <Compile Include="Assets\Scripts\Managers y controladores\CombateManager.cs" />
     <Compile Include="Assets\Scripts\Managers y controladores\GameManager.cs" />

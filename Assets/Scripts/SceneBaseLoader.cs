@@ -13,6 +13,7 @@ public class SceneBaseLoader : MonoBehaviour
         menuEsc = GameObject.Find("menuEsc");
         teclado.menuEsc = menuEsc;
         menuEsc.SetActive(false);
+        
     }
 
 }

@@ -49,7 +49,6 @@ public class Login : MonoBehaviour
             GameManager.instance.DatosPlayer.addUnidadEquipo(du);
             GameManager.instance.DatosPlayer.addUnidadEquipo(du2);
 
-
             //cuando esté todo cargado, lo llevo a la siguiente escena
             SceneManager.LoadScene("base");
 

@@ -1,7 +1,4 @@
-﻿using Boo.Lang.Runtime.DynamicDispatching;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
@@ -137,7 +134,7 @@ public class CombateManager : MonoBehaviour
         {
             if (!du.isPlaced)
             {
-               // Debug.Log(du.unitName);
+               // Debug.Log(du.unitName + " está sin colocar");
             }
         }
     }
@@ -151,40 +148,45 @@ public class CombateManager : MonoBehaviour
         RaycastHit hit;
 
         //LayerMask layerMaskUI = LayerMask.GetMask("UI");
-        if (unidadSeleccionada == null)
-        {
-            //seleccionar unidad para colocar  => unidadSeleccionada
-            IEnumerable<DatosUnidad> unidadesDisponibles =  gameManager.DatosPlayer.equipoUnidades.Where<DatosUnidad>(datos => !datos.isPlaced);
-            GameObject modelo = (GameObject)Resources.Load("Unidades/" + unidadesDisponibles.First().modelPrefabName);
-            unidadSeleccionada = modelo;
-        }
-        else
-        {
-            if (Physics.Raycast(ray, out hit))
+        IEnumerable<DatosUnidad> unidadesDisponibles = gameManager.DatosPlayer.equipoUnidades.Where(datos => !datos.isPlaced);
+        if (unidadesDisponibles.Count() > 0)
+		{
+            if (unidadSeleccionada == null)
             {
-                if (hit.collider.tag == "Tile")
+                //CHAPUZAAA -> Deberíamos esperar a que el user haga click y seleccione en UI que unidad va a colocar
+                GameObject modelo = (GameObject)Resources.Load("Unidades/" + unidadesDisponibles.First().modelPrefabName);
+                unidadSeleccionada = modelo;
+            }
+            else
+            {
+                if (Physics.Raycast(ray, out hit))
                 {
-                    Tile c = hit.collider.GetComponent<Tile>();
-
-                    if (c.selectable)
+                    if (hit.collider.tag == "Tile")
                     {
-                        c.target = true;
-                        if (Input.GetMouseButton(0))
+                        Tile c = hit.collider.GetComponent<Tile>();
+                        if (c.selectable)
                         {
-                           //cargar la unidad seleccionada
-
-                            
-                            GameObject nuevaUnidad = crearUnidad(unidadSeleccionada, c);
-                           
-                            nuevaUnidad.GetComponent<PlayerMove>().setDatos(gameManager.DatosPlayer.equipoUnidades[0]); //TEMPORAL
-                            Debug.Log("Colocando " + unidadSeleccionada + " en " + c);
-                            gameManager.DatosPlayer.equipoUnidades[0].isPlaced = true;
-                            unidadSeleccionada = null;
+                            c.target = true;
+                            if (Input.GetMouseButton(0))
+                            {
+                                //cargar la unidad seleccionada
+                                GameObject nuevaUnidad = crearUnidad(unidadSeleccionada, c);
+                                //CHAPUZAAA testeo
+                                nuevaUnidad.GetComponent<PlayerMove>().setDatos(gameManager.DatosPlayer.equipoUnidades[0]); //TEMPORAL
+                                Debug.Log("Colocando " + unidadSeleccionada + " en " + c);
+                                gameManager.DatosPlayer.equipoUnidades[0].isPlaced = true;
+                                unidadSeleccionada = null;
+                            }
                         }
                     }
                 }
             }
-        }
+		}
+		else
+		{
+            //Debug.Log("Todas las unidades están colocadas");
+		}
+       
 
        
         

@@ -104,7 +104,7 @@ public class LogicaJugadorMouse : MonoBehaviour
                         c.target = true;
                         if (Input.GetMouseButton(0))
                         {
-                            //activarunidad para colocarla
+                            //activar unidad para colocarla
                             GameObject unidadProvisional = (GameObject)Resources.Load("Unidades/UnidadSRC"); //ESTO HAY QUE CAMBIARLO!!!
                            
                             CombateManager.instance.crearUnidad(unidadProvisional, c);

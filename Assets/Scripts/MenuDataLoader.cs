@@ -1,6 +1,4 @@
-﻿using Boo.Lang;
-using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuDataLoader : MonoBehaviour
@@ -13,6 +11,21 @@ public class MenuDataLoader : MonoBehaviour
     public Text textRep, textDinero, textNickname;
     DatosPlayer datosPlayer;
 
+    public static MenuDataLoader instance;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(this);
+
+    }
 
     void Start()
     {
@@ -33,8 +46,6 @@ public class MenuDataLoader : MonoBehaviour
 
     void RefrescarDatosPlayer()
 	{
-        
-
         textRep.text = "Reputación: ";
         textRep.text = string.Concat(textRep.text, datosPlayer.reputacion);
 
@@ -48,16 +59,9 @@ public class MenuDataLoader : MonoBehaviour
             
             string nombre = datosPlayer.equipoUnidades[i].unitName;
             Sprite img = Resources.Load<Sprite>("Kaos/" + nombre);
-            Debug.Log("Estoy cambiando " + imgUnidades[i] + " por -> " + nombre);
             imgUnidades[i].sprite = img;
 
 
         }
-  //      foreach(DatosUnidad datosUnidad in datosPlayer.equipoUnidades)
-		//{
-  //          Debug.Log("unidad: " + datosUnidad.unitName);
-		//}
-
-
     }
 }

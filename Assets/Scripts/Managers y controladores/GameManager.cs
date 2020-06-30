@@ -22,10 +22,18 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
-        datosPlayer = gameObject.GetComponent<DatosPlayer>();
+       // datosPlayer = gameObject.GetComponent<DatosPlayer>();
         if (datosPlayer == null)
 		{
-            datosPlayer = gameObject.AddComponent<DatosPlayer>();
+            DatosPlayer datosPlayerTest = new DatosPlayer();
+            datosPlayerTest.dinero = 150;
+            datosPlayerTest.reputacion = 99;
+            datosPlayerTest.nickname = "nicknameTest";
+            datosPlayerTest.addUnidadEquipo(new DatosUnidad(1, "rasek", 5, 100));
+
+
+            datosPlayer = datosPlayerTest;
+            //datosPlayer = gameObject.AddComponent<DatosPlayer>();
 		}
 
         combateManager = gameObject.GetComponent<CombateManager>();

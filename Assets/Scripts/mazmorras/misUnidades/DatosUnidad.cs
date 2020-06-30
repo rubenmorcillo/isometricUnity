@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[SerializeField]
 public class DatosUnidad
 {
 
@@ -20,6 +20,7 @@ public class DatosUnidad
         hpMax = hp;
         hpActual = hpMax;
         this.rangoMovimiento = rangoMovimiento;
+        modelPrefabName = unitName;
     }
 
     public int id { get; set; }

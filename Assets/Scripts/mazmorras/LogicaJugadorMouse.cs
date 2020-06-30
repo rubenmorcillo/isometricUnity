@@ -7,18 +7,17 @@ public class LogicaJugadorMouse : MonoBehaviour
     //public LayerMask mascMov;
 
 
-    TextMeshProUGUI tmp;
+    //TextMeshProUGUI tmp;
     Camera cam;
 	//public GameObject camPos;
     MotorJugador motor;
     GameManager gameManager;
     void Start()
     {
-        GameObject objeto =  GameObject.Find("Texto");
-
-        tmp = objeto.GetComponent<TextMeshProUGUI>();
-        cam = Camera.main;
+        //GameObject objeto =  GameObject.Find("Texto");
         
+        //tmp = objeto.GetComponent<TextMeshProUGUI>();
+
         gameManager = GameManager.instance;
         if (motor == null)
         {
@@ -29,12 +28,23 @@ public class LogicaJugadorMouse : MonoBehaviour
             motor = GetComponent<MotorJugador>();
         }
 
-        cam.GetComponentInParent<CameraController>().SetTarget(gameObject);
+       
     }
+
 
     void Update()
     {
-        CheckMousse();
+        CheckTeclado();
+
+        if (cam != null)
+		{
+            CheckMousse();
+		}
+		else
+		{
+            cam = Camera.main;
+		}
+       
         if (EstadosJuego.EstadoActual() == EstadosJuego.Estado.EXPLORAR)
         {
           
@@ -42,6 +52,18 @@ public class LogicaJugadorMouse : MonoBehaviour
             CheckSala();
         }
        
+    }
+
+
+    void CheckTeclado()
+	{
+
+        //CHAPUZAA
+        if (Input.GetKeyDown(KeyCode.C))
+		{
+            Debug.Log("fijando objetivo de la cámara");
+            Camera.main.GetComponentInParent<CameraController>().SetTarget(gameObject);
+        }
     }
 
    
@@ -82,7 +104,7 @@ public class LogicaJugadorMouse : MonoBehaviour
                         c.target = true;
                         if (Input.GetMouseButton(0))
                         {
-                            //activarunidad para colocarla
+                            //activar unidad para colocarla
                             GameObject unidadProvisional = (GameObject)Resources.Load("Unidades/UnidadSRC"); //ESTO HAY QUE CAMBIARLO!!!
                            
                             CombateManager.instance.crearUnidad(unidadProvisional, c);
@@ -105,8 +127,8 @@ public class LogicaJugadorMouse : MonoBehaviour
         {
             if (hit.collider.tag == "Puerta")
             {
-                tmp.SetText("pulsa espacio para abrir");
-                //Debug.Log("pulsa espacio para continuar");
+                //tmp.SetText("pulsa espacio para abrir");
+               // Debug.Log("pulsa espacio para continuar");
                 if (Input.GetKey(KeyCode.Space))
                 {
                     //Debug.Log("Estoy abriendo la puerta " + hit.collider.GetComponentInParent<Puerta>());
@@ -116,10 +138,10 @@ public class LogicaJugadorMouse : MonoBehaviour
                     
                 }
             }
-            else
-            {
-                tmp.SetText("");
-            }
+            //else
+            //{
+            //    tmp.SetText("");
+            //}
         }
     }
 

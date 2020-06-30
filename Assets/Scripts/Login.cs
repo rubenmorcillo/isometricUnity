@@ -35,26 +35,28 @@ public class Login : MonoBehaviour
         {
             Debug.Log(request.downloadHandler.text);
 
+            //CHAPUZAAAA
+
             //cojo los datos y relleno datosPlayer
             //falseando los datos
-            GameManager.instance.DatosPlayer.nickname = "elNickDelJugador";
-            GameManager.instance.DatosPlayer.dinero = 10;
-            GameManager.instance.DatosPlayer.reputacion = 99;
+            DatosPlayer datosPlayerTest = new DatosPlayer();
+            datosPlayerTest.nickname = "nicknameLoginTest";
+            datosPlayerTest.dinero = 1;
+            datosPlayerTest.reputacion = 1;
+
 
             //falseando las unidades q tiene
             DatosUnidad du = new DatosUnidad(1, "rasek", 5, 100);
             DatosUnidad du2 = new DatosUnidad(2, "rusuk", 5, 100);
-            du.modelPrefabName = du.unitName;
+            datosPlayerTest.addUnidadEquipo(du);
+            datosPlayerTest.addUnidadEquipo(du2);
 
-            GameManager.instance.DatosPlayer.addUnidadEquipo(du);
-            GameManager.instance.DatosPlayer.addUnidadEquipo(du2);
 
+            GameManager.instance.DatosPlayer = datosPlayerTest;
 
             //cuando esté todo cargado, lo llevo a la siguiente escena
-            SceneManager.LoadScene("mazmorra_01");
+            SceneManager.LoadScene("base");
 
-            GameManager.instance.iniciarMazmorra();
-          
         }
     }
 
